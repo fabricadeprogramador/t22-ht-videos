@@ -1,29 +1,26 @@
 # t22-ht-videos
 
-## Project setup
+## Ao baixar o projeto execute o comando abaixo para baixar as dependências.
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Iniciar Aplicação
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Preparar projeto para produção
 ```
 npm run build
 ```
 
-### Run your tests
+### Executar Testes
 ```
 npm run test
 ```
 
-### Lints and fixes files
+### Executar eslint
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
