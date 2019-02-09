@@ -1,4 +1,4 @@
-# t22-ht-videos
+# HT Videos
 
 ## Ao baixar o projeto execute o comando abaixo para baixar as dependências.
 ```
