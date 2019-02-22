@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="teste"/>
+  <div>
+    <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import usuario from './components/usuario.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    usuario
+  },
+  methods:{
+    selecionarUsuario() {
+      alert("aaaaaaaaa");
+      console.log(usuario.id);
+    }
   }
 }
 </script>
 
 <style>
+body {
+  background: #141414;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
