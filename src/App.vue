@@ -5,16 +5,14 @@
 </template>
 
 <script>
-import usuario from './components/usuario.vue'
+import Usuario from './components/Usuario.vue'
 export default {
   name: 'app',
   components: {
-    usuario
+    Usuario
   },
   methods:{
     selecionarUsuario() {
-      alert("aaaaaaaaa");
-      console.log(usuario.id);
     }
   }
 }
@@ -26,10 +24,6 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  
 }
 </style>
