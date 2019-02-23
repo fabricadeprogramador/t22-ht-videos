@@ -1,23 +1,29 @@
 <template>
-  <v-app>
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <div>
+    <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
+import Usuario from './components/Usuario.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Usuario
   },
-  data () {
-    return {
-      //
+  methods:{
+    selecionarUsuario() {
     }
   }
 }
 </script>
+
+<style>
+body {
+  background: #141414;
+}
+
+#app {
+  
+}
+</style>
