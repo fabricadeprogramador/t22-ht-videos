@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Bem Vindo a HT Videos."/>
+  <div>
+    <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Usuario from './components/Usuario.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Usuario
+  },
+  methods:{
+    selecionarUsuario() {
+    }
   }
 }
 </script>
 
 <style>
+body {
+  background: #141414;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  
 }
 </style>
