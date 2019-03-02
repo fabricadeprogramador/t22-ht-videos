@@ -30,10 +30,6 @@
   </v-toolbar>
 
     <div>
-      <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
-    </div>
-
-    <div>
         <router-view></router-view>
     </div>
     <v-navigation-drawer
