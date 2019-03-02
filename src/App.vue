@@ -3,7 +3,9 @@
     wrap
     style="height: 200px;"
   >
-    <v-container>
+  <v-toolbar dark color="primary">
+    <v-toolbar-side-icon>
+
       <v-layout justify-center>
         <v-icon
           
@@ -14,11 +16,26 @@
           dehaze
         </v-icon>
       </v-layout>
-    </v-container>
+    
+    </v-toolbar-side-icon>
 
- <div>
-    <router-view></router-view>
-  </div>
+    <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn icon>
+      <v-icon>search</v-icon>
+    </v-btn>
+
+  </v-toolbar>
+
+    <div>
+      <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
+    </div>
+
+    <div>
+        <router-view></router-view>
+    </div>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
