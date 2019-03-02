@@ -73,7 +73,9 @@
 
 <script>
 import Usuario from './components/Usuario.vue'
+import Video from './components/Video.vue'
 export default {
+  name: 'App',
   data () {
     return {
     drawer: null,
@@ -87,7 +89,8 @@ export default {
     }
   },
   components: {
-    Usuario
+    Usuario,
+    Video
   },
   methods:{
     selecionarUsuario() {
