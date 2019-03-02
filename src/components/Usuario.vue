@@ -1,5 +1,5 @@
 <template>
-    <div class="div-main">
+    <div class="div-main flex">
       <div class="div-second flex">
           <span id="span-texto">Quem está assistindo?</span>
           <div class="div-usuarios flex">
@@ -27,6 +27,9 @@ export default {
 <style>
 body {
   font-family: 'Helvetica';
+}
+.div-main{
+  height: calc(100% - 64px);
 }
 
 .icon-usuario {
@@ -69,7 +72,7 @@ body {
   display: flex;
   cursor: default;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 #span-texto {

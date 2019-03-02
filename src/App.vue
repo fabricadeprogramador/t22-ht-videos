@@ -1,22 +1,16 @@
 <template>
-  <v-layout
-    wrap
-    style="height: 200px;"
-  >
-  <v-toolbar dark color="primary">
-    <v-toolbar-side-icon>
+  <v-app dark>
+  <v-toolbar dark >
 
+    <v-toolbar-side-icon>
       <v-layout justify-center>
         <v-icon
-          
           dark
           @click.stop="drawer = !drawer"
-        
         >
           dehaze
         </v-icon>
       </v-layout>
-    
     </v-toolbar-side-icon>
 
     <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
@@ -28,10 +22,9 @@
     </v-btn>
 
   </v-toolbar>
-
-    <div>
-        <router-view class="router-view"></router-view>
-    </div>
+    
+    <router-view></router-view>
+    
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
@@ -81,7 +74,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-  </v-layout>
+  </v-app>
 </template>
 
 <script>
@@ -111,13 +104,7 @@ export default {
   }
 }
 </script>
-<style>
-body {
-  background: #141414;
-}
 
-.router-view {
-  width: 100%;
-}
+<style>
 
 </style>
