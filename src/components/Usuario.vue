@@ -36,6 +36,7 @@ body {
   width: 10vw;
   min-height: 84px;
   min-width: 84px;
+  position: relative;
 }
 
 .div-usuario {
@@ -58,7 +59,6 @@ body {
   text-align: center;
   flex-direction: column; 
   width: 100%;
-  margin-top: 17%;
 }
 
 .div-usuarios {

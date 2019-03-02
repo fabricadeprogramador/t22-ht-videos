@@ -30,7 +30,7 @@
   </v-toolbar>
 
     <div>
-        <router-view></router-view>
+        <router-view class="router-view"></router-view>
     </div>
     <v-navigation-drawer
       v-model="drawer"
@@ -114,6 +114,10 @@ export default {
 <style>
 body {
   background: #141414;
+}
+
+.router-view {
+  width: 100%;
 }
 
 </style>
