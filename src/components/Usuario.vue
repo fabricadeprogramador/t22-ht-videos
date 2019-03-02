@@ -1,9 +1,5 @@
 <template>
     <div class="div-main">
-      <div id="div-logo">
-        <v-icon id="img-logo" color="white">local_activity</v-icon>
-        <span id="span-logo">HT Videos</span>
-      </div>
       <div class="div-second flex">
           <span id="span-texto">Quem está assistindo?</span>
           <div class="div-usuarios flex">
@@ -86,18 +82,5 @@ body {
   text-align: center;
   font-size: 15pt;
   color: gray;
-}
-
-#span-logo {
-  color: white;
-  display: inline-block;
-  font-size: 14pt;
-  margin-left: 5px;
-  margin-top: 2px;
-}
-
-#div-logo {
-  margin-left: 20px;
-  padding: 7px;
 }
 </style>
