@@ -1,5 +1,5 @@
 <template>
-    <div class="div-main">
+    <div class="div-main flex">
       <!-- <div id="div-logo">
         <v-icon id="img-logo" color="white">local_activity</v-icon>
         <span id="span-logo">HT Videos</span>
@@ -35,6 +35,9 @@ export default {
 body {
   font-family: 'Helvetica';
 }
+.div-main{
+  height: calc(100% - 64px);
+}
 
 .icon-usuario {
   border: rgb(37, 37, 37) 4px solid;
@@ -43,6 +46,7 @@ body {
   width: 10vw;
   min-height: 84px;
   min-width: 84px;
+  position: relative;
 }
 
 .div-usuario {
@@ -66,7 +70,6 @@ body {
   text-align: center;
   flex-direction: column; 
   width: 100%;
-  margin-top: 17%;
 }
 
 .div-usuarios {
@@ -77,7 +80,7 @@ body {
   display: flex;
   cursor: default;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 #span-texto {
