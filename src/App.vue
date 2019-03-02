@@ -8,7 +8,7 @@
 import Usuario from './components/Usuario.vue'
 export default {
   name: 'app',
-  components: {
+  components:{
     Usuario
   },
   methods:{
