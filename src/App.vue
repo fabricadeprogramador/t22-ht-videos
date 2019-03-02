@@ -6,10 +6,12 @@
 
 <script>
 import Usuario from './components/Usuario.vue'
+import Video from './components/Video.vue'
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    Usuario
+    Usuario,
+    Video
   },
   methods:{
     selecionarUsuario() {
