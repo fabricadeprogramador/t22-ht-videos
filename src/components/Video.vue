@@ -5,10 +5,13 @@
         
         <img 
         :src="'https://img.youtube.com/vi/'+video.id+'/maxresdefault.jpg'"
-        :width="300" 
-        :height="170"
         />
-        <p>{{video.title}}</p>
+        <!-- <v-btn x-large class="botao-play"> -->
+          <v-icon class="botao-play">
+          play_arrow
+          </v-icon>
+        <!-- </v-btn> -->
+        <span>{{video.title}}</span>
       </div>
     </div>
   </v-content>
@@ -38,16 +41,29 @@ import videos from '../data/lista-videos.json'
 
 .cards {
   width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  box-sizing: border-box;
   }
 
 img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  }
+
+span {
+  align-self: flex-end;
+  justify-content: flex-start;
+  font-weight: bold;
   position: absolute;
   }
 
-p {
-  position: relative;
-  top: 150px;
-  margin-left: 5px;
-  font-weight: bold
-  }
+.botao-play {
+  position: absolute;
+  font-size: 50px;
+}
+
 </style>
