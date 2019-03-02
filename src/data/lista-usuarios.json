@@ -1,0 +1,27 @@
+[
+    {   
+        "id": 1,
+        "nome": "Carla",
+        "imagem": "https://occ-0-267-1123.1.nflxso.net/art/6f579/22a7771cd88f0743bbdc28030498013d9cf6f579.png"
+    },
+    {
+        "id": 2,
+        "nome": "Kennedy",
+        "imagem": "https://occ-0-267-1123.1.nflxso.net/art/ecfae/3ea10459b6f40173f068bea5ce20b578505ecfae.png"
+    },
+    {
+        "id": 3,
+        "nome": "Luiz",
+        "imagem": "https://occ-0-267-1123.1.nflxso.net/art/4a68c/010c7b9061ece2fbf7bbb8d9bb6d2bee16f4a68c.png"
+    },
+    {
+        "id": 4,
+        "nome": "Larissa",
+        "imagem": "https://occ-0-267-1123.1.nflxso.net/art/da147/5a205b0510286b0ce3a5a4b79c4f1ab6510da147.png"
+    },
+    {
+       "id": 5,
+       "nome": "Stephany",
+       "imagem": "https://occ-0-267-1123.1.nflxso.net/art/2b3fe/fffc0a1389068ba3f6eb6dab1812d3867b52b3fe.png"
+    }
+]

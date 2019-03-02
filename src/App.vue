@@ -16,6 +16,9 @@
       </v-layout>
     </v-container>
 
+ <div>
+    <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
+  </div>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
@@ -69,29 +72,32 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        drawer: null,
-        items: [
-          { title: 'Home', icon: 'home' },
-          { title: 'Categorias', icon: 'style' },
-          { title: 'Vídeo', icon: 'movie_creation' }
-        ],
-        mini: false,
-        right: null
-      }
+import Usuario from './components/Usuario.vue'
+export default {
+  data () {
+    return {
+    drawer: null,
+    items: [
+    { title: 'Home', icon: 'home' },
+    { title: 'Categorias', icon: 'style' },
+    { title: 'Vídeo', icon: 'movie_creation' }
+    ],
+    mini: false,
+    right: null
+    }
+  },
+  components: {
+    Usuario
+  },
+  methods:{
+    selecionarUsuario() {
     }
   }
-</script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+</script>
+<style>
+body {
+  background: #141414;
+}
+
 </style>
