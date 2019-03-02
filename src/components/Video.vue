@@ -34,20 +34,20 @@ import videos from '../data/lista-videos.json'
   grid-column-gap: 5px;
   grid-template-columns: auto auto auto auto auto auto;
   padding: 5px;
-  
-}
+  }
 
-
-
-.cards
-{
+.cards {
   width: 300px;
-}
+  }
 
-img{position: absolute;}
-p{position: relative;
-top: 150px;
-margin-left: 5px;
-font-weight: bold}
+img {
+  position: absolute;
+  }
 
+p {
+  position: relative;
+  top: 150px;
+  margin-left: 5px;
+  font-weight: bold
+  }
 </style>
