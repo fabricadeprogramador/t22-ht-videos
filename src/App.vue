@@ -17,7 +17,7 @@
     </v-container>
 
  <div>
-    <usuario v-on:click="this.selecionarUsuario(usuario)"></usuario>
+    <router-view></router-view>
   </div>
     <v-navigation-drawer
       v-model="drawer"
