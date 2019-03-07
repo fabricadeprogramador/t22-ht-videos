@@ -39,7 +39,7 @@ body {
   width: 10vw;
   min-height: 84px;
   min-width: 84px;
-  position: relative;
+  position: relative; 
 }
 
 .div-usuario {
@@ -65,7 +65,11 @@ body {
 }
 
 .div-usuarios {
-  flex-direction: row;
+  display: flex;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .flex {
