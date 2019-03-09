@@ -8,8 +8,6 @@
         :height="170"
         />
         <p>{{video.title}}</p>
-
-          <v-icon class="icon-player" color="white" x-large @click="this.alerta()">play_circle_outline</v-icon>
       </div>
     </div>
   </v-content>
@@ -51,12 +49,4 @@ p {
   margin-left: 5px;
   font-weight: bold
   }
-
-.icon-player {
-  position: relative;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 70%);
-}
 </style>
