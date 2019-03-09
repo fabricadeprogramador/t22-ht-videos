@@ -85,7 +85,7 @@
 
 <script>
 import Usuario from './components/Usuario.vue'
-import Video from './components/Video.vue'
+
 export default {
   name: 'App',
   data () {
@@ -102,7 +102,7 @@ export default {
   },
   components: {
     Usuario,
-    Video
+    
   },
   methods:{
     selecionarUsuario() {
