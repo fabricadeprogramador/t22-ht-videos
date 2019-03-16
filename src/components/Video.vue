@@ -8,6 +8,10 @@
         :width="300" 
         :height="170"
         />
+        <v-btn icon class="butao-play">
+           <v-icon>play_arrow</v-icon>
+        </v-btn>
+
         <p>{{video.title}}</p>
       </div>
     </div>
@@ -49,5 +53,8 @@ p {
   top: 150px;
   margin-left: 5px;
   font-weight: bold
+  }
+  .butao-play{
+    font-size: 100px;
   }
 </style>
