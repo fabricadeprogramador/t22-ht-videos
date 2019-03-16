@@ -67,11 +67,6 @@ import videos from '../data/categorias.json'
   }
 </script>
 <style>
-
-iframe
-{
-  background-color: blue;
-}
 .video {
   width: 300px;
   display: flex;
