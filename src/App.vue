@@ -27,7 +27,6 @@
     </v-btn>
 
   </v-toolbar>
-
     
     <router-view></router-view>
     
@@ -110,6 +109,7 @@ export default {
   }
 }
 </script>
+
 <style>
 
 </style>

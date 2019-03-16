@@ -8,12 +8,11 @@
           :id="filme.id"
         />
           
-        <v-icon class="botao-play" @click="play()" :id="filme.id">play_arrow</v-icon>
+        <v-icon class="botao-play" color="white" @click="play()" :id="filme.id">play_circle_outline</v-icon>
 
         <div class="titulo">
           <span>{{filme.titulo}}</span>
         </div>
-
       </div>
       
       <div v-else>
@@ -52,15 +51,6 @@ import videos from '../data/categorias.json'
 </script>
 
 <style>
-/*.videos {
-  display: grid;
-  grid-column-gap: 5px;
-  grid-template-columns: auto auto auto auto auto auto;
-  padding: 5px;
-  }*/
-
-  
-
 .video {
   width: 300px;
   display: flex;
@@ -69,41 +59,41 @@ import videos from '../data/categorias.json'
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-
-  }
-
-.video + .video
-{
-  margin-left: 5px;
 }
 
+
+.video + .video {
+  margin-left: 5px;
+}
 
 img {
   width: 100%;
   height: 100%;
   position: relative;
-  }
+}
 
-.titulo{
+.titulo {
   position: absolute;
   width: 100%;
   text-align: left;
   bottom: 0;
   text-indent: 10px;
-  }
+}
 
-.titulo span{
+.titulo span {
   width: 100%;
-  
 }
 
 .botao-play {
-  position: absolute;
-  font-size: 50px;
-  align-self:center;
+  font-size: 45px;
+  align-self: center;
   justify-content: center;
-  
+  position: absolute;
+  display: none;
 }
 
+.video:hover .botao-play {
+  display: block;
+}
 
 </style>

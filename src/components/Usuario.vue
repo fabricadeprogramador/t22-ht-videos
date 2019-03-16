@@ -1,9 +1,5 @@
 <template>
     <div class="div-main flex">
-      <!-- <div id="div-logo">
-        <v-icon id="img-logo" color="white">local_activity</v-icon>
-        <span id="span-logo">HT Videos</span>
-      </div> -->
       <div class="div-second flex">
           <span id="span-texto">Quem está assistindo?</span>
           <div class="div-usuarios flex">
@@ -24,9 +20,6 @@ export default {
         return {
          usuarios /*o componente necessita da lista de usuarios previamente importada*/
         }
-    },
-    created(){
-         console.log(this.usuarios);
     }
 }
 </script>
@@ -46,7 +39,7 @@ body {
   width: 10vw;
   min-height: 84px;
   min-width: 84px;
-  position: relative;
+  position: relative; 
 }
 
 .div-usuario {
@@ -63,7 +56,6 @@ body {
 .div-usuario:hover img {
   border: 4px solid white;
   cursor: pointer;
-  
 }
 
 .div-second {
@@ -73,7 +65,11 @@ body {
 }
 
 .div-usuarios {
-  flex-direction: row;
+  display: flex;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .flex {
@@ -90,21 +86,8 @@ body {
 
 .nome-usuario {
   display: block;
-  margin-top: 10px;
   text-align: center;
   font-size: 15pt;
   color: gray;
 }
-
-/* #span-logo {
-  line-height: 70px;
-  color: white;
-  display: inline-block;
-  font-size: 15pt;
-}
-
-#div-logo {
-  height: 70px;
-} */
-
 </style>
