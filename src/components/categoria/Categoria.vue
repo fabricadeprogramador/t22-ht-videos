@@ -6,8 +6,9 @@
             <span>{{categoria.nome}}</span>
 
             <div class="videos">
-                <div v-for="video of categoria.videos" :key="video.id" >
-                <filme :filme="video"> </filme>
+                <div v-for="(video, index) of categoria.videos" :key="video.id" >
+                <filme :filme="video"
+                :index="index"> </filme>
                 </div>
             </div>
 

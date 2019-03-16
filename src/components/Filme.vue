@@ -1,32 +1,33 @@
 <template>
   <v-content>
-    <div class="video" v-if="exibirVideo === false">
-        <img 
+    <div class="video" v-if="exibirVideo === false" >
+     
+      <img 
           :src="'https://img.youtube.com/vi/'+filme.id+'/maxresdefault.jpg'"
           :width="300" 
           :height="170"
-          :id="filme.id"
-        />
-          
-        <v-icon class="botao-play" @click="play()" :id="filme.id">play_arrow</v-icon>
-
-        <div class="titulo">
+      />
+      
+      <v-icon class="botao-play"   @click="play()">
+        play_arrow
+      </v-icon>
+      
+      <div class="titulo">
           <span>{{filme.titulo}}</span>
-        </div>
-
       </div>
       
-      <div v-else>
-          <iframe
+    </div>
+    
+    <div v-else>
+      <iframe 
+          :id="filme.id"
           :src="'https://www.youtube.com/embed/'+filme.id+'?autoplay=1'"
           :frameborder="0"
-          allow="autoplay; fullscreen"
-          >
-        </iframe>
-      </div>
-  </v-content>
+          allow="autoplay; fullscreen">
+      </iframe>
+  </div>
+   </v-content>
 </template>
-   
  
 <script>
 import videos from '../data/categorias.json'
@@ -44,23 +45,33 @@ import videos from '../data/categorias.json'
       }
     },
     methods: {
-      play () {
+      play() {
         this.exibirVideo = true;
+        
+        setTimeout(
+          ()=>{
+                this.fullscreen();
+          },0
+        )
+        
+      },
+      fullscreen()
+      {
+
+        var elem = document.getElementById(this.filme.id);
+        let requestFullscreen = elem.requestFullscreen ||  elem.mozRequestFullScreen || 
+        elem.webkitRequestFullscreen || elem.msRequestFullscreen
+        requestFullscreen.bind(elem)();
       }
     }
   }
 </script>
-
 <style>
-/*.videos {
-  display: grid;
-  grid-column-gap: 5px;
-  grid-template-columns: auto auto auto auto auto auto;
-  padding: 5px;
-  }*/
 
-  
-
+iframe
+{
+  background-color: blue;
+}
 .video {
   width: 300px;
   display: flex;
@@ -104,6 +115,7 @@ img {
   justify-content: center;
   
 }
+
 
 
 </style>
