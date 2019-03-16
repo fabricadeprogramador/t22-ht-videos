@@ -12,9 +12,7 @@
         <v-icon class="botao-play" color="white" @click="play()" :id="filme.id">play_circle_outline</v-icon>
         <div class="titulo">
           <span>{{filme.titulo}}</span>
-        </div>
-      </div>
-      
+        </div>      
     </div>
     
     <div v-else>
