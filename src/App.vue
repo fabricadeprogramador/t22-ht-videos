@@ -16,13 +16,17 @@
     <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
 
     <v-spacer></v-spacer>
+    <v-flex xs12 md3>
+    <v-text-field
+              label="Regular"
+            ></v-text-field>
 
+        </v-flex>
     <v-btn icon>
       <v-icon>search</v-icon>
     </v-btn>
 
   </v-toolbar>
-
     
     <router-view></router-view>
     
@@ -105,6 +109,7 @@ export default {
   }
 }
 </script>
+
 <style>
 
 </style>
