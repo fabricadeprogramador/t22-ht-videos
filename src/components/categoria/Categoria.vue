@@ -27,10 +27,7 @@ export default {
     },
     methods:{
         moverVideos() {
-           alert("aaaaaa");
-           $( "videos" ).scrollLeft( 300 );
-        //    var teste = document.getElementsByClassName("categoria");
-        //    teste.scrollTop(40);                                                                  
+                                                                           
         }
     }
 }
@@ -44,8 +41,8 @@ export default {
     padding-bottom: 20px;
     background: #303030;
     margin-top: 30px;
-    margin-bottom: -50px;  /*this was added */
-    bottom: 20px;  /*this was added*/
+    margin-bottom: -50px;  
+    bottom: 20px;  
 }
 
 .videos {
