@@ -3,7 +3,7 @@
       <div class="div-second flex">
           <span id="span-texto">Quem está assistindo?</span>
           <div class="div-usuarios flex">
-            <div class="div-usuario" v-for="usuario in usuarios" :key="usuario.id" @onclick="this.$emit('click')">
+            <div class="div-usuario" v-for="usuario in getListaUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
                 <img class="icon-usuario" :src="usuario.imagem">
                 <span class="nome-usuario">{{ usuario.nome }}</span>
             </div>
@@ -13,13 +13,23 @@
 </template>
 
 <script>
-import usuarios from '../data/lista-usuarios.json' /*importando a lista do arquivo .json*/
+import {mapGetters, mapMutations} from 'vuex'
 export default {
     name: 'usuario', /*definindo o nome do componente*/
-    data(){
-        return {
-         usuarios /*o componente necessita da lista de usuarios previamente importada*/
-        }
+
+    computed:{
+      ...mapGetters([
+        'getListaUsuarios'
+      ])
+    },
+    methods:{
+      ...mapMutations([
+        'setUsuario'
+      ]),
+      selecionarUsuario(usuario) {
+        this.setUsuario(usuario);
+        this.$router.push('/categorias');
+      }
     }
 }
 </script>
