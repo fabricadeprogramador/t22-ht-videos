@@ -27,7 +27,7 @@
     <div class="text-xs-center">
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
-        <img v-on="on" :src="getUsuario.imagem"  class="imagemusuario" >
+        <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
       </template>
       <v-list>
         <v-list-tile
@@ -148,7 +148,7 @@ export default {
 </script>
 
 <style>
-.imagemusuario{
+.imagem-usuario{
   width: 49px;
   display:flex;
   align-items: center;
