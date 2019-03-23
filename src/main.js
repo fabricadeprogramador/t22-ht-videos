@@ -8,6 +8,7 @@ import VueRouter from 'vue-router';
 import Usuario from '@/components/Usuario'
 import Filme from '@/components/Filme'
 import Categoria from '@/components/categoria/Categoria'
+import store from './store/store.js'
 
 Vue.use(Vuetify)
 Vue.use(Router)
@@ -41,5 +42,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
