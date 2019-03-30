@@ -9,9 +9,11 @@ import Usuario from '@/components/Usuario'
 import Filme from '@/components/Filme'
 import Categoria from '@/components/categoria/Categoria'
 import store from './store/store.js'
+import Vue2Filters from 'vue2-filters'
 
 Vue.use(Vuetify)
 Vue.use(Router)
+Vue.use(Vue2Filters)
 
 Vue.config.productionTip = false;
 
