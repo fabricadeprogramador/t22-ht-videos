@@ -26,24 +26,26 @@
   
     <div class="text-xs-center">
     <v-menu offset-y>
-      <template v-slot:activator="{ on }">
+      <template v-slot:activator="{ on }" >
         <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
       </template>
       <v-list>
-        <v-list-tile
-          v-for="(usuario, index) in getListaUsuarios"
-          :key="index"
-          @click="alterarUsuario(usuario)"
-        >
-          <v-list-tile-title class="menu">
-            <img :src="usuario.imagem" class="mini-menu">
-            {{ usuario.nome }}</v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile @click="sair()">
-          <v-list-tile-title>
-            Sair
-          </v-list-tile-title>
-        </v-list-tile>
+          <v-list-tile
+              v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
+              :key="index"
+              @click="alterarUsuario(usuario)"
+              >
+                <v-list-tile-title class="menu" >
+                    <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
+                </v-list-tile-title>
+                            
+          </v-list-tile>
+                              
+          <v-list-tile @click="sair()">
+
+                <v-list-tile-title>Sair</v-list-tile-title>
+                    
+          </v-list-tile>
       </v-list>
     </v-menu>
   </div>
@@ -106,7 +108,6 @@
 </template>
 
 <script>
-import Usuario from './components/Usuario.vue'
 import {mapGetters, mapMutations} from 'vuex'
 export default {
   name: 'App',
@@ -122,22 +123,20 @@ export default {
     right: null
     }
   },
-  components: {
-    Usuario,
-    
-  },
   computed:{
     ...mapGetters([
       'getUsuario',
       'getListaUsuarios'
     ])
   },
+  
   methods: {
     ...mapMutations([
       'setUsuario'
     ]),
     alterarUsuario(usuario) {
       this.setUsuario(usuario);
+      
     },
     sair() {
       this.setUsuario({});
@@ -165,6 +164,9 @@ export default {
   justify-content: space-evelyn;
 }
 
-
+body
+{
+  height: 1000px;
+}
 
 </style>
