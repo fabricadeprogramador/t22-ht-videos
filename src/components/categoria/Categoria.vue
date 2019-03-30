@@ -1,40 +1,35 @@
 <template>
     <div>
-        <div v-for="categoria of categorias" :key="categoria.nome" class="categoria">
+        <div v-for="categoria of getListaCategorias" :key="categoria.nome" class="categoria">
             <div class="nome-categoria">           
                 <span class="span-categoria">{{categoria.nome}}</span>
             </div>
-            <div class="videos">
+           <div class="videos">
                 <v-icon color=white x-large id="icon-forward" @click="moverVideos()">keyboard_arrow_right</v-icon>
                 <div v-for="(video, index) of categoria.videos" :key="video.id" >
                 <filme :filme="video"
                 :index="index"> </filme>
                 </div>
-            </div>       
+            </div>          
         </div>
     </div>
 </template>
 
 <script>
-import categorias from '../../data/categorias.json'
+import {mapGetters} from 'vuex'
 import Filme from '@/components/Filme'
 export default {
     components: {Filme},
-    data()
-    {
-        return {
-            categorias
-        }
+    computed:{
+      ...mapGetters([
+        'getListaCategorias'
+      ])
     },
     methods:{
-        moverVideos() {
-           alert("aaaaaa");
-           $( "videos" ).scrollLeft( 300 );
-        //    var teste = document.getElementsByClassName("categoria");
-        //    teste.scrollTop(40);                                                                  
-        }
+      
     }
 }
+
 </script>
 
 <style>
