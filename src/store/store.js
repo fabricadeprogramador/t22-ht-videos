@@ -11,7 +11,9 @@ export default new Vuex.Store({
     },
     getters: {
         getListaUsuarios(state) {
-            return state.listaUsuarios; 
+            return state.listaUsuarios.filter(
+                (usuario) => usuario.id != state.usuario.id
+            ); 
         },
         getUsuario(state) {
             return state.usuario;
