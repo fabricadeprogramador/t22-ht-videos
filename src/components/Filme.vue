@@ -3,11 +3,11 @@
     <div class="video" v-if="exibirVideo === false" >
      
       <img 
-          :src="'https://img.youtube.com/vi/'+filme.id+'/maxresdefault.jpg'"
+		  :src="'https://img.youtube.com/vi/'+filme.id+'/maxresdefault.jpg'"
           :width="300" 
           :height="170"
           :id="filme.id"
-        />
+      />
           
         <v-icon class="botao-play" color="white" @click="play()" :id="filme.id">play_circle_outline</v-icon>
         <div class="titulo">
@@ -27,9 +27,8 @@
 </template>
  
 <script>
-import videos from '../data/categorias.json'
   export default {
-    name: 'filme',
+	name: 'filme',
     props:{
       filme:{
         type: Object, 
@@ -54,7 +53,6 @@ import videos from '../data/categorias.json'
       },
       fullscreen()
       {
-
         var elem = document.getElementById(this.filme.id);
         let requestFullscreen = elem.requestFullscreen ||  elem.mozRequestFullScreen || 
         elem.webkitRequestFullscreen || elem.msRequestFullscreen
@@ -63,6 +61,7 @@ import videos from '../data/categorias.json'
     }
   }
 </script>
+
 <style>
 .video {
   width: 300px;
@@ -73,7 +72,6 @@ import videos from '../data/categorias.json'
   justify-content: center;
   position: relative;
 }
-
 
 .video + .video {
   margin-left: 5px;
@@ -108,6 +106,4 @@ img {
 .video:hover .botao-play {
   display: block;
 }
-
-
 </style>

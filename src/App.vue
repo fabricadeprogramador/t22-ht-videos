@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-  <v-toolbar dark >
+  <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
 
     <v-toolbar-side-icon>
       <v-layout justify-center>
@@ -17,15 +17,36 @@
 
     <v-spacer></v-spacer>
     <v-flex xs12 md3>
-    <v-text-field
-              label="Regular"
-            ></v-text-field>
+    <v-text-field label="Buscador" ></v-text-field>
 
         </v-flex>
     <v-btn icon>
       <v-icon>search</v-icon>
     </v-btn>
-
+  
+    <div class="text-xs-center">
+    <v-menu offset-y>
+      <template v-slot:activator="{ on }">
+        <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
+      </template>
+      <v-list>
+        <v-list-tile
+          v-for="(usuario, index) in getListaUsuarios"
+          :key="index"
+          @click="alterarUsuario(usuario)"
+        >
+          <v-list-tile-title class="menu">
+            <img :src="usuario.imagem" class="mini-menu">
+            {{ usuario.nome }}</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="sair()">
+          <v-list-tile-title>
+            Sair
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+  </div>
   </v-toolbar>
     
     <router-view></router-view>
@@ -46,11 +67,13 @@
 
         <v-list-tile avatar tag="div">
           <v-list-tile-avatar>
-            <img src="https://randomuser.me/api/portraits/men/85.jpg">
+            <img :src="getUsuario.imagem">
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>John Leider</v-list-tile-title>
+            <v-list-tile-title>
+              {{getUsuario.nome}}
+            </v-list-tile-title>
           </v-list-tile-content>
 
           <v-list-tile-action>
@@ -84,7 +107,7 @@
 
 <script>
 import Usuario from './components/Usuario.vue'
-
+import {mapGetters, mapMutations} from 'vuex'
 export default {
   name: 'App',
   data () {
@@ -103,13 +126,45 @@ export default {
     Usuario,
     
   },
-  methods:{
-    selecionarUsuario() {
+  computed:{
+    ...mapGetters([
+      'getUsuario',
+      'getListaUsuarios'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'setUsuario'
+    ]),
+    alterarUsuario(usuario) {
+      this.setUsuario(usuario);
+    },
+    sair() {
+      this.setUsuario({});
+      this.$router.push('/');
     }
   }
 }
 </script>
 
 <style>
+.imagem-usuario{
+  width: 49px;
+  display:flex;
+  align-items: center;
+}
+.mini-menu{
+  width: 24px;
+  margin-right: 8px;
+  
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-evelyn;
+}
+
+
 
 </style>
