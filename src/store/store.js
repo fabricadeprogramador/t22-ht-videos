@@ -8,24 +8,40 @@ Vue.use(Vuex)
 export default new Vuex.Store({ 
     state: {
         usuario:{},
+        palavraBuscada: '',
         listaUsuarios,
-        listaCategorias,
-        palavraBuscada
+        listaCategorias
     },
     getters: {
         getListaUsuarios(state) {
-            return state.listaUsuarios; 
+            return state.listaUsuarios.filter(
+                (usuario) => usuario.id != state.usuario.id
+            ); 
         },
         getUsuario(state) {
             return state.usuario;
         },
         getListaCategorias(state) {
-            return state.listaCategorias;
+            return state.listaCategorias.reduce((acc, categoria) => {
+                acc.push({
+                    nome: categoria.nome,
+                    videos: categoria.videos.filter(video => {
+                            return video.titulo.toLowerCase().includes(state.palavraBuscada.toLowerCase());
+                    })
+                })
+                return acc;
+            }, []);
+        },
+        getPalavraBuscada(state) {
+            return state.palavraBuscada; 
         }
     },
     mutations:{
         setUsuario(state,usuario) {
             state.usuario = usuario;
+        },
+        setPalavraBuscada(state, value){
+            state.palavraBuscada = value;
         }
-    },
+    }
 })

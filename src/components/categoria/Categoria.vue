@@ -4,13 +4,13 @@
             <div class="nome-categoria">           
                 <span class="span-categoria">{{categoria.nome}}</span>
             </div>
-            <div class="videos">
+           <div class="videos">
                 <v-icon color=white x-large id="icon-forward" @click="moverVideos()">keyboard_arrow_right</v-icon>
                 <div v-for="(video, index) of categoria.videos" :key="video.id" >
                 <filme :filme="video"
                 :index="index"></filme>
                 </div>
-            </div>       
+            </div>          
         </div>
     </div>
 </template>
@@ -20,16 +20,27 @@ import {mapGetters} from 'vuex'
 import Filme from '@/components/Filme'
 export default {
     components: {Filme},
-    computed: {
-        ...mapGetters([
-            'getListaCategorias'
-        ])
+    computed:{
+      ...mapGetters([
+        'getListaCategorias',
+        'getUsuario'
+      ])
     },
-    methods: {
-        moverVideos() {                                                               
+    beforeMount(){
+        console.log('beforeMount');
+    },
+    beforeCreate(){
+        console.log('beforeCreate');
+    },
+    created(){
+        console.log('created');
+        console.log(this.getUsuario);
+        if(!this.getUsuario.id){
+            this.$router.push('/');
         }
     }
 }
+
 </script>
 
 <style>

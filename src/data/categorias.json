@@ -1,20 +1,74 @@
 [
-  
+  {
+    "nome": "Em alta",
+    "videos": [
+      {
+        "id": "3bSOSI4Lr_I",
+        "titulo": "The Umbrella Academy"
+      },
+      {
+        "id": "gi5pXrQhZxQ",
+        "titulo": "Coisa Mais Linda"
+      },
+      {
+        "id": "TzAThtzftio",
+        "titulo": "Loja de Unicórnios"
+      },
+      {
+        "id": "jDiYGjp5iFg",
+        "titulo": "Black Mirror"
+      },
+      {
+        "id": "dzSD6Iib0zA",
+        "titulo": "Love, Simon"
+      },
+      {
+        "id": "PzBX_c-F6sk",
+        "titulo": "Dinastia"
+      },
+      {
+        "id": "i7gFYYA2jfM",
+        "titulo": "One Day at a Time"
+      },
+      {
+        "id": "5fSm1l49iq0",
+        "titulo": "Five Foot Two"
+      },
+      {
+        "id": "o308rJlWKUc",
+        "titulo": "Sex Education"
+      },
+      {
+        "id": "DioetCtU8Ko",
+        "titulo": "The OA"
+      },
+      {
+        "id": "um0APnEQ0AQ",
+        "titulo": "O Desaparecimento de Madeleine McCann"
+      },
+      {
+        "id": "P6AzL9wgcDY",
+        "titulo": "The Assassination of Gianni Versace"
+      }
+    ]
+  },
   {
     "nome": "Desenho",
     "videos" : [
+
       {
-        "id": "lJhvtAt_1Nk",
-        "titulo": "Procurando Nemo"
+        "id": "wyOXUZeblbo",
+        "titulo": "Rilakkuma e Kaoru"
       },
       {
-        "id": "pC12TFLWO74",
-        "titulo": "O Chefinho"
+        "id": "pgC8RowEjOA",
+        "titulo":" Ovos Verdes e Presunto"
       },
       {
         "id": "IOyEstZ3IAs",
         "titulo": "Big Mouth"
       },
+      
       {
         "id": "yh2dFPgAWqc",
         "titulo":" Carmen Sandiego"
@@ -24,20 +78,20 @@
         "titulo":" Pinky Malinky "
       },
       {
-        "id": "UI1C0eA3yi8",
-        "titulo": "Kangaroo Valley Safari"
+        "id": "lJhvtAt_1Nk",
+        "titulo": "Procurando Nemo"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "pC12TFLWO74",
+        "titulo": "O Chefinho"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "FnkFOLiwOLE",
+        "titulo":"Aggretsuko: Feliz Natal Metaleiro"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "UwJhnmwpCyU",
+        "titulo":"Baki - O Campeão"
       }
     ]
   },
@@ -45,40 +99,56 @@
     "nome": "Comédia",
     "videos" : [
       {
-        "id": "lJhvtAt_1Nk",
-        "titulo": "Procurando Nemo"
+        "id": "r4PiUSYn-D0",
+        "titulo": "O Date Perfeito"
       },
       {
-        "id": "pC12TFLWO74",
-        "titulo": "O Chefinho"
-      },
-      {
-        "id": "IOyEstZ3IAs",
-        "titulo": "Big Mouth"
-      },
-      {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
-      },
-      {
-        "id": "4nn1QHNi0OA",
-        "titulo":" Pinky Malinky "
+        "id": "XvIRBLJSDmQ",
+        "titulo": "Santa Clarita Diet"
       },
       {
         "id": "UI1C0eA3yi8",
-        "titulo": "Kangaroo Valley Safari"
+        "titulo": "Até que a Gente te Separe"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "1TAttuSNpsg",
+        "titulo":"Megarrromântico"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "IAF5VUcivng",
+        "titulo":"Dumplin'"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "m4-zM0owC2g",
+        "titulo":"SAMANTHA!"
+      },
+      {
+        "id": "39kK1rZlG1o",
+        "titulo":"Queer Eye"
+      },
+      {
+        "id": "INz3OLl_8V0",
+        "titulo":"Grace and Frankie"
+      },
+      {
+        "id": "gD9e9nRkLgw",
+        "titulo": "Amy Schumer Growing"
+      },
+      {
+        "id": "rFr7mjUNWwY",
+        "titulo": "Glow"
+      },
+      {
+        "id": "nDjQcdjvzB0",
+        "titulo": "Jane The Virgin"
+      },
+      {
+        "id": "JoZ09nJNN28",
+        "titulo": "The End of the F***ing World"
+      },
+      {
+        "id": "L648zyfHHxI",
+        "titulo": "Everything Sucks!"
       }
     ]
   },
@@ -86,40 +156,48 @@
     "nome": "Ação",
     "videos" : [
       {
-        "id": "lJhvtAt_1Nk",
-        "titulo": "Procurando Nemo"
+        "id": "FSmHY6U8le4",
+        "titulo": "O Último Guardião"
       },
       {
-        "id": "pC12TFLWO74",
-        "titulo": "O Chefinho"
+        "id": "G0OvzGdx2bY",
+        "titulo": "Crimes em Déli"
       },
       {
-        "id": "IOyEstZ3IAs",
-        "titulo": "Big Mouth"
+        "id": "whlxIo2VoRo",
+        "titulo": "Osmosis"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "j1MmItxeHhg",
+        "titulo":"Altered Carbon"
       },
       {
-        "id": "4nn1QHNi0OA",
-        "titulo":" Pinky Malinky "
+        "id": "CMTE62DL37Q",
+        "titulo":"Operação Fronteira"
       },
       {
-        "id": "UI1C0eA3yi8",
-        "titulo": "Kangaroo Valley Safari"
+        "id": "A4MsX7w2_j8",
+        "titulo": "Estrada Sem Lei"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "UOGf76wnT2E",
+        "titulo":"Nightflyers"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "WKP9nktFVfc",
+        "titulo":"Black Earth Rising"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "zA3sbePiDps",
+        "titulo":"Close"
+      },
+      {
+        "id": "3KkhD0MnaJU",
+        "titulo": "Tomb Raider"
+      },
+      {
+        "id": "yIUube1pSC0",
+        "titulo": "Atomic Blonde"
       }
     ]
   },
@@ -127,44 +205,156 @@
     "nome": "Suspense",
     "videos" : [
       {
-        "id": "lJhvtAt_1Nk",
-        "titulo": "Procurando Nemo"
+        "id": "Z9n9OI9ABp8",
+        "titulo": "La Casa de Papel"
       },
       {
-        "id": "pC12TFLWO74",
-        "titulo": "O Chefinho"
+        "id": "hhvbJNaRUIM",
+        "titulo": "Bright"
       },
       {
-        "id": "IOyEstZ3IAs",
-        "titulo": "Big Mouth"
+        "id": "VX-TnKoivR8",
+        "titulo": "Sense8"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "9ZaS5y2ZMzc",
+        "titulo":"13 Reasons Why"
       },
       {
-        "id": "4nn1QHNi0OA",
-        "titulo":" Pinky Malinky "
+        "id": "ZgLz_SUr1iA",
+        "titulo":"Stranger Things"
       },
       {
-        "id": "UI1C0eA3yi8",
-        "titulo": "Kangaroo Valley Safari"
+        "id": "c1N3tpnmy-c",
+        "titulo": "O Mundo Sombrio de Sabrina"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "GYn4r6nV0tw",
+        "titulo":"Perdidos no Espaço"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "mQoEE8gpCwk",
+        "titulo":"Onde Está Segunda?"
       },
       {
-        "id": "yh2dFPgAWqc",
-        "titulo":" Carmen Sandiego"
+        "id": "ThoAg0gOgeI",
+        "titulo":"Noite de Lobos"
+      }
+    ]
+  },
+  {
+    "nome": "Fantasia",
+    "videos" : [
+      {
+        "id": "OoSUHgs7hCs",
+        "titulo": "Ella Enchanted"
+      },
+      {
+        "id": "yQIFkMlDF4M",
+        "titulo": "Harry Potter e a Pedra Filosofal"
+      },
+      {
+        "id": "EEFsJ-43pnA",
+        "titulo": "Harry Potter e a Câmara Secreta"
+      },
+      {
+        "id": "RezjC4jdbTU",
+        "titulo": "Harry Potter e o Prisioneiro de Azkaban"
+      },
+      {
+        "id": "VX-TnKoivR8",
+        "titulo": "Sense8"
+      },
+      {
+        "id": "9ZaS5y2ZMzc",
+        "titulo":"13 Reasons Why"
+      },
+      {
+        "id": "ZgLz_SUr1iA",
+        "titulo":"Stranger Things"
+      },
+      {
+        "id": "c1N3tpnmy-c",
+        "titulo": "O Mundo Sombrio de Sabrina"
+      },
+      {
+        "id": "GYn4r6nV0tw",
+        "titulo":"Perdidos no Espaço"
+      },
+      {
+        "id": "mQoEE8gpCwk",
+        "titulo":"Onde Está Segunda?"
+      },
+      {
+        "id": "ThoAg0gOgeI",
+        "titulo":"Noite de Lobos"
+      }
+    ]
+  },
+  {
+    "nome": "Drama",
+    "videos" : [
+      {
+        "id": "ewcsTzE9fMA",
+        "titulo": "Anne with an E"
+      },
+      {
+        "id": "vgOcTSe9rCc",
+        "titulo": "The Crown"
+      },
+      {
+        "id": "ZgLz_SUr1iA",
+        "titulo":"Stranger Things"
+      },
+      {
+        "id": "c1N3tpnmy-c",
+        "titulo": "O Mundo Sombrio de Sabrina"
+      },
+      {
+        "id": "GYn4r6nV0tw",
+        "titulo":"Perdidos no Espaço"
+      },
+      {
+        "id": "mQoEE8gpCwk",
+        "titulo":"Onde Está Segunda?"
+      },
+      {
+        "id": "ThoAg0gOgeI",
+        "titulo":"Noite de Lobos"
+      }
+    ]
+  },
+  {
+    "nome": "Musical",
+    "videos": [
+      {
+        "id": "CrJTtf-hzDE",
+        "titulo": "Bohemian Rhapsody"
+      },
+      {
+        "id": "gdjR2lvIfJ4",
+        "titulo": "O Rei do Show"
+      },
+      {
+        "id": "F03N-ApQdmw",
+        "titulo": "Pitch Perfect"
+      },
+      {
+        "id": "sadujj45Y90",
+        "titulo": "A Bela e a Fera"
+      },
+      {
+        "id": "nR5UCWjBFGg",
+        "titulo": "Mamma Mia! Here We Go Again"
+      },
+      {
+        "id": "LHnhBv32udY",
+        "titulo": "Mary Poppins Returns"
+      },
+      {
+        "id": "ukDLkkvZYFk",
+        "titulo": "High School Musical"
       }
     ]
   }
-
-  
-    
 ]

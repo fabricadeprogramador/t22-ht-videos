@@ -19,6 +19,8 @@
       <iframe 
           :id="filme.id"
           :src="'https://www.youtube.com/embed/'+filme.id+'?autoplay=1'"
+          :width="300" 
+          :height="170"
           :frameborder="0"
           allow="autoplay; fullscreen">
       </iframe>
