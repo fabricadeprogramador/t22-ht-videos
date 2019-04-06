@@ -27,14 +27,14 @@ export default {
       ])
     },
     beforeMount(){
-        console.log('beforeMount');
+        //console.log('beforeMount');
     },
     beforeCreate(){
-        console.log('beforeCreate');
+        //console.log('beforeCreate');
     },
     created(){
-        console.log('created');
-        console.log(this.getUsuario);
+        //console.log('created');
+        //console.log(this.getUsuario);
         if(!this.getUsuario.id){
             this.$router.push('/');
         }
