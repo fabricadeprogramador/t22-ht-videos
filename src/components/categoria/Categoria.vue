@@ -22,11 +22,22 @@ export default {
     components: {Filme},
     computed:{
       ...mapGetters([
-        'getListaCategorias'
+        'getListaCategorias',
+        'getUsuario'
       ])
     },
-    methods:{
-      
+    beforeMount(){
+        //console.log('beforeMount');
+    },
+    beforeCreate(){
+        //console.log('beforeCreate');
+    },
+    created(){
+        //console.log('created');
+        //console.log(this.getUsuario);
+        if(!this.getUsuario.id){
+            this.$router.push('/');
+        }
     }
 }
 
