@@ -8,7 +8,7 @@
                 <v-icon color=white x-large id="icon-forward" @click="moverVideos()">keyboard_arrow_right</v-icon>
                 <div v-for="(video, index) of categoria.videos" :key="video.id" >
                 <filme :filme="video"
-                :index="index"> </filme>
+                :index="index"></filme>
                 </div>
             </div>          
         </div>

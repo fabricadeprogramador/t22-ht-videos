@@ -25,7 +25,7 @@
     <v-select 
       v-model="select"
       v-validate="'required'"
-      :items="item"
+      :items="getNomeCategoria"
       :error-messages="errors.collect('select')"
       label="Categorias"
       data-vv-name="select"
@@ -48,15 +48,13 @@ export default {
     },
     computed:{
       ...mapGetters([
-        'getListaCategorias',
-        'getUsuario'
+        'getNomeCategoria'
       ])
     },
     data: () => ({
       titulo: '',
       id: '',
       select: null,
-      item: [],
       form:{},
       
       dictionary: {
@@ -81,11 +79,6 @@ export default {
 
     mounted () {
       this.$validator.localize(this.dictionary)
-
-      for(var i=0; i<this.getListaCategorias.length; i++)
-      {
-          this.item.push (this.getListaCategorias[i].nome);
-      }
     },
 
     methods: {

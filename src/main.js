@@ -11,6 +11,9 @@ import Categoria from '@/components/categoria/Categoria'
 import Cadastro from '@/components/cadastro/Cadastro'
 import store from './store/store.js'
 import VeeValidate from 'vee-validate';
+import CategoriaListagem from '@/components/categoria/CategoriaListagem'
+import Lista from '@/components/Lista'
+import VideoListagem from '@/components/categoria/VideoListagem'
 
 
 
@@ -46,9 +49,22 @@ const router = new VueRouter({
       path: '/cadastro',
       name: 'cadastro',
       component: Cadastro
+    },
+    {
+      path: '/categoria-listagem',
+      name: 'Categoria-listagem',
+      component: CategoriaListagem 
+    }
+    ,
+    {
+      path: '/video-listagem',
+      name: 'Video-listagem',
+      component: VideoListagem 
     }
   ]
 })
+
+Vue.component("lista", Lista);
 
 new Vue({
   router,
