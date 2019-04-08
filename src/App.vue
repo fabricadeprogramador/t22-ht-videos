@@ -16,42 +16,41 @@
     <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
 
     <v-spacer></v-spacer>
-    <v-toolbar-items >
-      <v-expand-x-transition > 
-        <v-text-field
-            v-if="exibirCampoBusca"
-            transition="slide-x-transition"
-            label="Buscador" 
-            v-model="palavraBuscada"
-            />
-      </v-expand-x-transition>
-      
-      <v-btn icon  @click="buscar()" slot="activator">
-        <v-icon>search</v-icon>
-      </v-btn>
-      
-      <div class="text-xs-center">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }" >
-            <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
-          </template>
-          <v-list>
-              <v-list-tile
-                  v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
-                  :key="index"
-                  @click="alterarUsuario(usuario)"
-                  >
-                    <v-list-tile-title class="menu" >
-                        <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
-                    </v-list-tile-title>
-              </v-list-tile>
-              <v-list-tile @click="sair()">
+    <v-flex xs12 md3>
+    <v-text-field 
+    label="Buscador"
+    v-model="palavraBuscada" ></v-text-field>
+
+        </v-flex>
+    <v-btn icon>
+      <v-icon>search</v-icon>
+    </v-btn>
+  
+    <div class="text-xs-center">
+    <v-menu offset-y>
+      <template v-slot:activator="{ on }" >
+        <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
+      </template>
+      <v-list>
+          <v-list-tile
+              v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
+              :key="index"
+              @click="alterarUsuario(usuario)"
+              >
+                <v-list-tile-title class="menu" >
+                    <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
+                </v-list-tile-title>
+                            
+          </v-list-tile>
+                              
+          <v-list-tile @click="sair()">
+
                 <v-list-tile-title>Sair</v-list-tile-title>
-              </v-list-tile>
-          </v-list>
-        </v-menu>
-      </div>
-    </v-toolbar-items>
+                    
+          </v-list-tile>
+      </v-list>
+    </v-menu>
+  </div>
   </v-toolbar>
     
     <router-view></router-view>
@@ -123,31 +122,19 @@ export default {
     { title: 'Vídeo', icon: 'movie_creation' }
     ],
     mini: false,
-    right: null,
-    exibirCampoBusca: false
+    right: null
     }
   },
   computed:{
     ...mapGetters([
       'getUsuario',
-      'getListaUsuarios',
-      'getPalavraBuscada'
-    ]),
-    palavraBuscada: {
-      get(){
-        return this.getPalavraBuscada;
-      },
-      set(value){
-        this.setPalavraBuscada(value);
-      }
-
-    }
+      'getListaUsuarios'
+    ])
   },
   
   methods: {
     ...mapMutations([
-      'setUsuario',
-      'setPalavraBuscada'
+      'setUsuario'
     ]),
     alterarUsuario(usuario) {
       this.setUsuario(usuario);
@@ -156,9 +143,6 @@ export default {
     sair() {
       this.setUsuario({});
       this.$router.push('/');
-    },
-    buscar(){
-      this.exibirCampoBusca = !this.exibirCampoBusca;
     }
   }
 }
@@ -167,7 +151,6 @@ export default {
 <style>
 .imagem-usuario{
   width: 49px;
-  height: 49px;
   display:flex;
   align-items: center;
 }
@@ -177,7 +160,7 @@ export default {
   
 }
 
-.menu, .v-toolbar__items{
+.menu{
   display: flex;
   align-items: center;
   justify-content: space-evelyn;
