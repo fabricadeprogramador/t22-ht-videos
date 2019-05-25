@@ -1,22 +1,31 @@
 <template>
     <div>
         <div v-for="categoria of getListaCategorias" :key="categoria.nome" class="categoria">
-            <div class="nome-categoria">           
+            <div class="nome-categoria">
                 <span class="span-categoria">{{categoria.nome}}</span>
             </div>
            <div class="videos">
-                <v-icon color=white x-large id="icon-forward" @click="moverVideos()">keyboard_arrow_right</v-icon>
-                <div v-for="(video, index) of categoria.videos" :key="video.id" >
-                <filme :filme="video"
-                :index="index"></filme>
+                <v-icon 
+                  color=white 
+                  x-large 
+                  id="icon-forward" 
+                  @click="moverVideos()" > 
+                    keyboard_arrow_right
+                </v-icon>
+
+                <div v-for="(video, index) of categoria.filmes" :key="video.id" >
+                  <filme 
+                    :filme="video" 
+                    :index="index">
+                  </filme>
                 </div>
-            </div>          
+            </div> 
         </div>
     </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import Filme from '@/components/Filme'
 export default {
     components: {Filme},
@@ -26,18 +35,16 @@ export default {
         'getUsuario'
       ])
     },
-    beforeMount(){
-        //console.log('beforeMount');
-    },
-    beforeCreate(){
-        //console.log('beforeCreate');
-    },
     created(){
-        //console.log('created');
-        //console.log(this.getUsuario);
         if(!this.getUsuario.id){
             this.$router.push('/');
         }
+        this.buscarCategorias();
+    },
+    methods:{
+      ...mapActions([
+        'buscarCategorias'
+      ])
     }
 }
 
@@ -47,7 +54,7 @@ export default {
 .categoria {
     display: flex;
     flex-direction: column;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding-bottom: 20px;
     background: #303030;
     margin-top: 30px;

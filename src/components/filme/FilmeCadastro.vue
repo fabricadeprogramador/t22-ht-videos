@@ -43,60 +43,61 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
-    $_veeValidate: {
-      validator: 'new'
-    },
-    computed:{
-      ...mapGetters([
-        'getNomeCategoria'
-      ])
-    },
-    data: () => ({
-      titulo: '',
-      id: '',
-      select: null,
-      form:{},
+  name: 'FilmeCadastro',
+  $_veeValidate: {
+    validator: 'new'
+  },
+  computed:{
+    ...mapGetters([
+      'getNomeCategoria'
+    ])
+  },
+  data: () => ({
+    titulo: '',
+    id: '',
+    select: null,
+    form:{},
+    
+    dictionary: {
       
-      dictionary: {
-        
-        custom: {
-          titulo: {
-            required: () => 'Por favor insira um titulo ao filme',
-            max: 'O campo Título deve conter até 20 caracteres'
-            // custom messages
-          },
-          select: {
-            required: 'Select field is required'
-          },
-          id:{
-            required: () => 'Por favor insira o ID do filme',
-            max: 'O campo de ID deve conter até 11 caracteres'
-            // custom messages
-          }
+      custom: {
+        titulo: {
+          required: () => 'Por favor insira um titulo ao filme',
+          max: 'O campo Título deve conter até 20 caracteres'
+          // custom messages
+        },
+        select: {
+          required: 'Select field is required'
+        },
+        id:{
+          required: () => 'Por favor insira o ID do filme',
+          max: 'O campo de ID deve conter até 11 caracteres'
+          // custom messages
         }
       }
-    }),
+    }
+  }),
 
-    mounted () {
-      this.$validator.localize(this.dictionary)
+  mounted () {
+    this.$validator.localize(this.dictionary)
+  },
+
+  methods: {
+    submit () {
+      this.$validator.validateAll()
+      /*fetch('myapp.com/form', {
+    method:'POST',
+    body:JSON.stringify(this.form),
+  }*/
     },
-
-    methods: {
-      submit () {
-        this.$validator.validateAll()
-        /*fetch('myapp.com/form', {
-      method:'POST',
-      body:JSON.stringify(this.form),
-    }*/
-      },
-      clear () {
-        this.titulo = ''
-        this.id = ''
-        this.select = null
-        this.$validator.reset()
-      }
+    clear () {
+      this.titulo = ''
+      this.id = ''
+      this.select = null
+      this.$validator.reset()
     }
   }
+}
 </script>
 
 <style>
