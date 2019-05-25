@@ -1,5 +1,5 @@
 <template>
-    <div id="div-lista">
+    <div class="listagem">
         <h1>{{ titulo }}</h1>
         <v-list two-line>
           <template v-for="(item, index ) in items">
@@ -9,15 +9,11 @@
             ></v-divider>
 
             <v-list-tile
-              :key="item"
+              :key="item._id"
               avatar
             >
-                <!-- <v-list-tile-avatar>
-                <img :src="item.avatar">
-                </v-list-tile-avatar> -->
-
                 <v-list-tile-content>
-                    <v-list-tile-title>{{ item }}</v-list-tile-title>
+                    <v-list-tile-title>{{ item.titulo || item.nome }}</v-list-tile-title>
                 </v-list-tile-content>
             
                 <v-spacer></v-spacer>
@@ -38,32 +34,31 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
-    props:{
-        titulo:{
-            type: String,
-            required: true
-        },
-        items:{
-            type: Array,
-            required: true
-        }
+  props:{
+    titulo:{
+        type: String,
+        required: true
     },
-    methods: {
-     editar(item)
-     {
-         this.$emit('editar', item)
-     },
-     deletar(item)
-     {
-         this.$emit('deletar', item)
-     }
-        
-      
+    items:{
+        type: Array,
+        required: true
+    }
+  },
+  methods: {
+    editar(item){
+      this.$emit('editar', item)
+    },
+    deletar(item){
+      this.$emit('deletar', item)
     }
   }
+}
 </script>
 
 <style >
+.listagem{
+  padding: 16px;
+}
 h1 {
     margin-top: 10px;
     margin-bottom: 15px;

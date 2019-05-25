@@ -3,13 +3,13 @@
     <div class="video" v-if="exibirVideo === false" >
      
       <img 
-          :src="'https://img.youtube.com/vi/'+filme.id+'/maxresdefault.jpg'"
+          :src="'https://img.youtube.com/vi/'+filme.chave+'/maxresdefault.jpg'"
           :width="300" 
           :height="170"
-          :id="filme.id"
+          :id="filme.chave"
         />
           
-        <v-icon class="botao-play" color="white" @click="play()" :id="filme.id">play_circle_outline</v-icon>
+        <v-icon class="botao-play" color="white" @click="play()" :id="filme.chave">play_circle_outline</v-icon>
         <div class="titulo">
           <span>{{filme.titulo}}</span>
         </div>
@@ -19,8 +19,8 @@
     
     <div v-else>
       <iframe 
-          :id="filme.id"
-          :src="'https://www.youtube.com/embed/'+filme.id+'?autoplay=1'"
+          :id="filme.chave"
+          :src="'https://www.youtube.com/embed/'+filme.chave+'?autoplay=1'"
           :width="300" 
           :height="170"
           :frameborder="0"
@@ -58,7 +58,7 @@
       fullscreen()
       {
 
-        var elem = document.getElementById(this.filme.id);
+        var elem = document.getElementById(this.filme.chave);
         let requestFullscreen = elem.requestFullscreen ||  elem.mozRequestFullScreen || 
         elem.webkitRequestFullscreen || elem.msRequestFullscreen
         requestFullscreen.bind(elem)();
