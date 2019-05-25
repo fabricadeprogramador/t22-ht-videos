@@ -48,7 +48,7 @@ export default new Vuex.Store({
                 categoria.videos.forEach(video => {
                     acc.push(
                         video.titulo
-                    )    
+                    )
                 });
                
                 return acc;
