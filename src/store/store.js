@@ -34,6 +34,25 @@ export default new Vuex.Store({
         },
         getPalavraBuscada(state) {
             return state.palavraBuscada; 
+        }, 
+        getNomeCategoria(state){
+            return state.listaCategorias.reduce((acc, categoria)=> {
+                acc.push(
+                    categoria.nome
+                )
+                return acc;
+            },[]);
+        },
+        getNomeVideo(state){
+            return state.listaCategorias.reduce((acc, categoria)=> {
+                categoria.videos.forEach(video => {
+                    acc.push(
+                        video
+                    )    
+                });
+               
+                return acc;
+            },[]);
         }
     },
     mutations:{
