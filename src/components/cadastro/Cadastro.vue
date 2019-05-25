@@ -25,7 +25,7 @@
     <v-select 
       v-model="select"
       v-validate="'required'"
-      :items="item"
+      :items="getNomeCategoria"
       :error-messages="errors.collect('select')"
       label="Categorias"
       data-vv-name="select"
@@ -48,15 +48,13 @@ export default {
     },
     computed:{
       ...mapGetters([
-        'getListaCategorias',
-        'getUsuario'
+        'getNomeCategoria'
       ])
     },
     data: () => ({
       titulo: '',
       id: '',
       select: null,
-      item: [],
       form:{},
       
       dictionary: {
@@ -64,7 +62,7 @@ export default {
         custom: {
           titulo: {
             required: () => 'Por favor insira um titulo ao filme',
-            max: 'O campo Título deve conter até 20 caracteres'
+            max: 'O campo Título deve conter até 20 caracteres '
             // custom messages
           },
           select: {
@@ -78,14 +76,9 @@ export default {
         }
       }
     }),
-
+ 
     mounted () {
       this.$validator.localize(this.dictionary)
-
-      for(var i=0; i<this.getListaCategorias.length; i++)
-      {
-          this.item.push (this.getListaCategorias[i].nome);
-      }
     },
 
     methods: {
