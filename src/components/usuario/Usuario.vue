@@ -13,24 +13,30 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
-    name: 'usuario', /*definindo o nome do componente*/
+  name: 'usuario', /*definindo o nome do componente*/
 
-    computed:{
-      ...mapGetters([
-        'getListaUsuarios'
-      ])
-    },
-    methods:{
-      ...mapMutations([
-        'setUsuario'
-      ]),
-      selecionarUsuario(usuario) {
-        this.setUsuario(usuario);
-        this.$router.push('/categorias');
-      }
+  computed:{
+    ...mapGetters([
+      'getListaUsuarios'
+    ])
+  },
+  mounted(){
+    this.logarUsuario();
+  },
+  methods:{
+    ...mapMutations([
+      'setUsuario'
+    ]),
+    ...mapActions([
+      'logarUsuario'
+    ]),
+    selecionarUsuario(usuario) {
+      this.setUsuario(usuario);
+      this.$router.push('/categorias');
     }
+  }
 }
 </script>
 

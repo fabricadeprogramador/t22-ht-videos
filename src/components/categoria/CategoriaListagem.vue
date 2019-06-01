@@ -2,7 +2,7 @@
 <div>
     <lista
         titulo="Categorias"
-        :items="getNomeCategoria"
+        :items="getCategorias"
         @editar="editar" @deletar="deletar"
     />
 
@@ -13,7 +13,7 @@ import {mapGetters} from 'vuex'
 export default {
     computed:{
       ...mapGetters([
-        'getNomeCategoria'
+        'getCategorias'
       ])
     },
     methods: {

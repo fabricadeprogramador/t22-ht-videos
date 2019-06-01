@@ -5,17 +5,15 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Router from 'vue-router'
 import VueRouter from 'vue-router';
-import Usuario from '@/components/Usuario'
+import Usuario from '@/components/usuario/Usuario'
 import Filme from '@/components/Filme'
 import Categoria from '@/components/categoria/Categoria'
-import Cadastro from '@/components/cadastro/Cadastro'
+import FilmeCadastro from '@/components/filme/FilmeCadastro'
 import store from './store/store.js'
 import VeeValidate from 'vee-validate';
 import CategoriaListagem from '@/components/categoria/CategoriaListagem'
 import Lista from '@/components/Lista'
-import VideoListagem from '@/components/categoria/VideoListagem'
-
-
+import FilmeListagem from '@/components/filme/FilmeListagem'
 
 Vue.use(Vuetify)
 Vue.use(Router)
@@ -38,17 +36,12 @@ const router = new VueRouter({
     {
       path: '/filme-cadastro',
       name: 'Filme-cadastro',
-      component: Filme
+      component: FilmeCadastro
     },
     {
       path: '/categorias',
       name: 'categoria',
       component: Categoria
-    },
-    {
-      path: '/cadastro',
-      name: 'cadastro',
-      component: Cadastro
     },
     {
       path: '/categoria-listagem',
@@ -57,9 +50,9 @@ const router = new VueRouter({
     }
     ,
     {
-      path: '/video-listagem',
-      name: 'Video-listagem',
-      component: VideoListagem 
+      path: '/filme-listagem',
+      name: 'Filme-listagem',
+      component: FilmeListagem 
     }
   ]
 })

@@ -96,6 +96,7 @@
         <v-list-tile
           v-for="item in items"
           :key="item.title"
+          @click="irPara(item)"
           
         >
           <v-list-tile-action>
@@ -119,9 +120,9 @@ export default {
     return {
     drawer: null,
     items: [
-    { title: 'Home', icon: 'home' },
-    { title: 'Categorias', icon: 'style' },
-    { title: 'Vídeo', icon: 'movie_creation' }
+    { title: 'Home', icon: 'home', rota:'categorias' },
+    { title: 'Categorias', icon: 'style',rota:'categoria-listagem' },
+    { title: 'Filmes', icon: 'movie_creation',rota:'filme-listagem'  }
     ],
     mini: false,
     right: null,
@@ -153,6 +154,9 @@ export default {
     alterarUsuario(usuario) {
       this.setUsuario(usuario);
       
+    },
+    irPara(item){
+      this.$router.push('/'+item.rota);
     },
     sair() {
       this.setUsuario({});
