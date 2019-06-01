@@ -27,7 +27,7 @@ export default {
       'buscarFilmes'
     ]),
     editar(){
-
+      this.$router.push("filme-cadastro");
     },
     deletar(){
 

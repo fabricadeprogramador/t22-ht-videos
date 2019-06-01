@@ -12,6 +12,10 @@ export default new Vuex.Store({
         palavraBuscada: '',
         filmes: [],
         categorias: [],
+        categoria:{
+          nome:'',
+          filmes:[]
+        },
         usuarios:[],
         listaUsuarios,
         listaCategorias
@@ -42,6 +46,9 @@ export default new Vuex.Store({
         getCategorias(state){
             return state.categorias;
         },
+        getCategoria(state){
+          return state.categoria;
+      },
         getFilmes(state){
             return state.filmes
         }
@@ -59,13 +66,16 @@ export default new Vuex.Store({
       setCategorias(state, categorias){
         state.categorias = categorias;
       },
+      setCategoria(state, categoria){
+        state.categoria = categoria;
+      },
       setLogarUsuario(state, usuarios){
         state.usuarios = usuarios;
       }
     },
     actions: {
       buscarFilmes({ commit }){
-        http.get('http://localhost:3000/filme')
+        return http.get('http://localhost:3000/filme')
         .then(( { data } ) => {
           commit('setFilmes', data); 
         })
@@ -84,7 +94,28 @@ export default new Vuex.Store({
       },
       buscarFilmesPorNome(){
         return http.get('http://localhost:3000/filme/porNome')
-      }
+      },
+      salvarCategoria({commit,dispatch}, categoria){
+        return http.post('http://localhost:3000/categoria', categoria)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
+      excluirCategoria({commit, dispatch}, categoria) {
+        return http.delete('http://localhost:3000/categoria/' + categoria._id)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
+      editarCategoria({commit,dispatch}, categoria){
+        return http.put('http://localhost:3000/categoria', categoria)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
     }
 
 })
