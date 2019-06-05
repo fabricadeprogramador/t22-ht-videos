@@ -164,8 +164,15 @@ export default {
     buscar(){
       this.exibirCampoBusca = !this.exibirCampoBusca;
     }
+  },
+  mounted(){
+    if(!this.getUsuario.nome ){
+      this.$router.push('/');
+    }
+
   }
 }
+
 </script>
 
 <style>

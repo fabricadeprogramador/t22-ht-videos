@@ -1,6 +1,9 @@
 <template>
     <div class="listagem">
         <h1>{{ titulo }}</h1>
+        <v-btn @click="inserir" color="success">
+          Inserir
+        </v-btn>
         <v-list two-line>
           <template v-for="(item, index ) in items">
 
@@ -17,7 +20,7 @@
                 </v-list-tile-content>
             
                 <v-spacer></v-spacer>
-
+                
                 <v-btn icon @click="editar(item)">
                     <v-icon>edit</v-icon>
                 </v-btn>  
@@ -50,7 +53,10 @@ export default {
     },
     deletar(item){
       this.$emit('deletar', item)
-    }
+    },
+    inserir(){
+      this.$emit('inserir')
+    },
   }
 }
 </script>

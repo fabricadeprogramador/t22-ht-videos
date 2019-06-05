@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="categoria of getListaCategorias" :key="categoria.nome" class="categoria">
+        <div v-for="categoria of getListaCategorias" :key="categoria._id" class="categoria">
             <div class="nome-categoria">
                 <span class="span-categoria">{{categoria.nome}}</span>
             </div>

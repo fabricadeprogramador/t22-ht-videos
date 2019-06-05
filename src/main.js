@@ -14,6 +14,7 @@ import VeeValidate from 'vee-validate';
 import CategoriaListagem from '@/components/categoria/CategoriaListagem'
 import Lista from '@/components/Lista'
 import FilmeListagem from '@/components/filme/FilmeListagem'
+import CategoriaCadastro from '@/components/categoria/CategoriaCadastro'
 
 Vue.use(Vuetify)
 Vue.use(Router)
@@ -39,6 +40,11 @@ const router = new VueRouter({
       component: FilmeCadastro
     },
     {
+      path: '/filme-listagem',
+      name: 'Filme-listagem',
+      component: FilmeListagem 
+    },
+    {
       path: '/categorias',
       name: 'categoria',
       component: Categoria
@@ -47,12 +53,10 @@ const router = new VueRouter({
       path: '/categoria-listagem',
       name: 'Categoria-listagem',
       component: CategoriaListagem 
-    }
-    ,
-    {
-      path: '/filme-listagem',
-      name: 'Filme-listagem',
-      component: FilmeListagem 
+    },{
+      path: '/categoria-cadastro',
+      name: 'Categoria-cadastro',
+      component: CategoriaCadastro
     }
   ]
 })
