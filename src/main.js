@@ -15,8 +15,6 @@ import CategoriaListagem from '@/components/categoria/CategoriaListagem'
 import Lista from '@/components/Lista'
 import VideoListagem from '@/components/categoria/VideoListagem'
 
-
-
 Vue.use(Vuetify)
 Vue.use(Router)
 Vue.use(VeeValidate);
