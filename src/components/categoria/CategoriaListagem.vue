@@ -1,14 +1,15 @@
 <template>
-<div>
-  <lista
-    titulo="Categorias"
-    :items="getCategorias"
-    @editar="editar" 
-    @deletar="deletar"
-    @inserir="inserir"
-  />
-</div>
+  <div>
+    <lista
+      titulo="Categorias"
+      :items="getCategorias"
+      @editar="editar" 
+      @deletar="deletar"
+      @inserir="inserir"
+    />
+  </div>
 </template>
+
 <script>
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
@@ -18,21 +19,21 @@ export default {
     ])
   },
   methods: {
-      editar(categoria) {
-        this.setCategoria(categoria);
-        this.$router.push("categoria-cadastro")
-      },
-      inserir(){
-        this.$router.push("categoria-cadastro")
-      },  
-      
-      deletar(categoria) {
-         this.excluirCategoria(categoria)
-        .then( ({ data } ) => {
-          alert(data);
-        }) 
-      },
-      ...mapActions([
+    editar(categoria) {
+      this.setCategoria(categoria);
+      this.$router.push("categoria-cadastro")
+    },
+    inserir(){
+      this.setCategoria({});
+      this.$router.push("categoria-cadastro")
+    },  
+    deletar(categoria) {
+      this.excluirCategoria(categoria)
+      .then( ({ data } ) => {
+        alert(data);
+      }) 
+    },
+    ...mapActions([
       'excluirCategoria'
     ]),
     ...mapMutations([
@@ -41,9 +42,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
-
-
