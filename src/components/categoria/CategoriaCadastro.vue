@@ -1,48 +1,37 @@
 <template>
   <div class="formulario" >
     <span id="span-texto">Cadastro de Categorias</span>
-    
-  <form>
-    <v-text-field
-      v-model="categoria.nome"
-      v-validate="'required|min:4'"
-      :counter="20"
-      :error-messages="errors.collect('Genero')"
-      label="Título do genero"
-      required
-    ></v-text-field>
-     
-     <v-list
-          subheader
-          two-line
-        >
-          <v-subheader>Selecione um ou mais filmes para a categoria</v-subheader>
+    <form>
+      <v-text-field
+        v-model="categoria.nome"
+        v-validate="'required|min:4'"
+        :counter="20"
+        :error-messages="errors.collect('Genero')"
+        label="Título do genero"
+        required
+      ></v-text-field>
 
-          <v-list-tile v-for="(filme, index) in filmesSelecionados" :key="index">
-            <v-list-tile-action>
-              <v-checkbox v-model="filme.selecionado"></v-checkbox>
-            </v-list-tile-action>
+      <v-list subheader two-line>
+        <v-subheader>Selecione um ou mais filmes para a categoria</v-subheader>
+        <v-list-tile v-for="(filme, index) in filmesSelecionados" :key="index">
+          <v-list-tile-action>
+            <v-checkbox v-model="filme.selecionado"></v-checkbox>
+          </v-list-tile-action>
 
-            <v-list-tile-content>
-              <v-list-tile-title>{{ filme.titulo }}</v-list-tile-title>
-              
-            </v-list-tile-content>
-          </v-list-tile>
-
-          
-        </v-list>
-    
-
-    <v-btn @click="salvar">Salvar</v-btn>
-    <!-- <v-btn @click="clear">clear</v-btn> -->
-
-  </form>
-
+          <v-list-tile-content>
+            <v-list-tile-title>{{ filme.titulo }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>  
+      </v-list>
+      
+      <v-btn color="success" @click="salvar">Salvar</v-btn>
+      <v-btn outline color="white" @click="voltar">Voltar</v-btn>
+    </form>
   </div>
 </template>
+
 <script>
 import {mapGetters, mapActions} from 'vuex'
-
 export default {
   name: 'CategoriaCadastro',
   $_veeValidate: {
@@ -69,7 +58,11 @@ export default {
       'salvarCategoria',
       'editarCategoria'
     ]),
-    selecionarFilmes(){
+    selecionarFilmes() {
+      if (this.categoria.filmes === undefined) {
+        this.filmesSelecionados = this.getFilmes;
+      } 
+      else {
         this.filmesSelecionados = this.getFilmes.reduce((acc,filme)=>{
           acc.push({
             _id: filme._id,
@@ -79,23 +72,29 @@ export default {
           })
           return acc;
         }, [])
-      },
-    salvar (){
+      }
+    },
+    salvar() {
       this.categoria.filmes = this.filmesSelecionados.filter(
-          (filme) => filme.selecionado 
+        (filme) => filme.selecionado 
       ); 
-
       if( this.categoria._id){
         this.editarCategoria(this.categoria)
         .then( ({ data } ) => {
           alert(data);
+          this.voltar();
         })
-      }else{
+      } 
+      else{
         this.salvarCategoria(this.categoria)
         .then( ({ data } ) => {
           alert(data);
+          this.voltar();
         })
       }
+    },
+    voltar(){
+      this.$router.go(-1);
     }
   },
   mounted() {
@@ -108,14 +107,12 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: 'Helvetica';
-}
+  body {
+    font-family: 'Helvetica';
+  }
 
-.formulario{
-  
-  width: 50%;
-  margin: auto;
-}
-
+  .formulario{
+    width: 50%;
+    margin: auto;
+  }
 </style>
