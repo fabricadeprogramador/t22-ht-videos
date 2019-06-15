@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import listaUsuarios from '../data/lista-usuarios.json'
 import listaCategorias from '../data/categorias.json'
+import http from '../httpHelper'
 
 Vue.use(Vuex) 
 
@@ -9,6 +10,13 @@ export default new Vuex.Store({
     state: {
         usuario:{},
         palavraBuscada: '',
+        filmes: [],
+        categorias: [],
+        categoria:{
+          nome:'',
+          filmes:[]
+        },
+        usuarios:[],
         listaUsuarios,
         listaCategorias
     },
@@ -22,11 +30,11 @@ export default new Vuex.Store({
             return state.usuario;
         },
         getListaCategorias(state) {
-            return state.listaCategorias.reduce((acc, categoria) => {
+            return state.categorias.reduce((acc, categoria) => {
                 acc.push({
                     nome: categoria.nome,
-                    videos: categoria.videos.filter(video => {
-                            return video.titulo.toLowerCase().includes(state.palavraBuscada.toLowerCase());
+                    filmes: categoria.filmes.filter(filme => {
+                            return filme.titulo.toLowerCase().includes(state.palavraBuscada.toLowerCase());
                     })
                 })
                 return acc;
@@ -35,32 +43,79 @@ export default new Vuex.Store({
         getPalavraBuscada(state) {
             return state.palavraBuscada; 
         }, 
-        getNomeCategoria(state){
-            return state.listaCategorias.reduce((acc, categoria)=> {
-                acc.push(
-                    categoria.nome
-                )
-                return acc;
-            },[]);
+        getCategorias(state){
+            return state.categorias;
         },
-        getNomeVideo(state){
-            return state.listaCategorias.reduce((acc, categoria)=> {
-                categoria.videos.forEach(video => {
-                    acc.push(
-                        video
-                    )    
-                });
-               
-                return acc;
-            },[]);
+        getCategoria(state){
+          return state.categoria;
+      },
+        getFilmes(state){
+            return state.filmes
         }
     },
     mutations:{
-        setUsuario(state,usuario) {
-            state.usuario = usuario;
-        },
-        setPalavraBuscada(state, value){
-            state.palavraBuscada = value;
-        }
+      setUsuario(state,usuario) {
+          state.usuario = usuario;
+      },
+      setPalavraBuscada(state, value){
+          state.palavraBuscada = value;
+      },
+      setFilmes(state, filmes){
+        state.filmes = filmes;
+      },
+      setCategorias(state, categorias){
+        state.categorias = categorias;
+      },
+      setCategoria(state, categoria){
+        state.categoria = categoria;
+      },
+      setLogarUsuario(state, usuarios){
+        state.usuarios = usuarios;
+      }
+    },
+    actions: {
+      buscarFilmes({ commit }){
+        return http.get('http://localhost:3000/filme')
+        .then(( { data } ) => {
+          commit('setFilmes', data); 
+        })
+      },
+      buscarCategorias({ commit }){
+        http.get('http://localhost:3000/categoria')
+        .then( ({ data } ) => {
+          commit('setCategorias', data);
+        })
+      },
+      logarUsuario({ commit }){
+        http.get('http://localhost:3000/usuario')
+        .then( ( { data } ) =>{
+          commit('setLogarUsuario', data);
+        })
+      },
+      buscarFilmesPorNome(){
+        return http.get('http://localhost:3000/filme/porNome')
+      },
+      salvarCategoria({commit,dispatch}, categoria){
+        return http.post('http://localhost:3000/categoria', categoria)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
+      excluirCategoria({commit, dispatch}, categoria) {
+        return http.delete('http://localhost:3000/categoria/' + categoria._id)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
+      editarCategoria({commit,dispatch}, categoria){
+        return http.put('http://localhost:3000/categoria', categoria)
+        .then((response)=>{
+          dispatch('buscarCategorias')
+          return response
+        })
+      },
     }
+
 })
