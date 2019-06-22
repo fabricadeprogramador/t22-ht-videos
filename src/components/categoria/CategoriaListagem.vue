@@ -1,34 +1,44 @@
 <template>
-<div>
+  <div>
     <lista
-        titulo="Categorias"
-        :items="getCategorias"
-        @editar="editar" @deletar="deletar"
+      titulo="Categorias"
+      :items="getCategorias"
+      @editar="editar" 
+      @deletar="deletar"
+      @inserir="inserir"
     />
-
-</div>
+  </div>
 </template>
+
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
-    computed:{
-      ...mapGetters([
-        'getCategorias'
-      ])
+  computed:{
+    ...mapGetters([
+      'getCategorias'
+    ])
+  },
+  methods: {
+    editar(categoria) {
+      this.setCategoria(categoria);
+      this.$router.push("categoria-cadastro")
     },
-    methods: {
-        editar(item) {
-            this.$router.push("categorias")
-        }, 
-        deletar(item) {
-            alert("Deletar")
-        }
-    }
+    inserir(){
+      this.setCategoria({});
+      this.$router.push("categoria-cadastro")
+    },  
+    deletar(categoria) {
+      this.excluirCategoria(categoria)
+      .then( ({ data } ) => {
+        alert(data);
+      }) 
+    },
+    ...mapActions([
+      'excluirCategoria'
+    ]),
+    ...mapMutations([
+      'setCategoria'
+    ])
+  }
 }
 </script>
-
-<style>
-
-</style>
-
-

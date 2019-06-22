@@ -1,62 +1,62 @@
 <template>
   <v-app dark>
-  <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+    <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+      <v-toolbar-side-icon>
+        <v-layout justify-center>
+          <v-icon
+            dark
+            @click.stop="drawer = !drawer">
+            dehaze
+          </v-icon>
+        </v-layout>
+      </v-toolbar-side-icon>
 
-    <v-toolbar-side-icon>
-      <v-layout justify-center>
-        <v-icon
-          dark
-          @click.stop="drawer = !drawer"
-        >
-          dehaze
-        </v-icon>
-      </v-layout>
-    </v-toolbar-side-icon>
+      <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
 
-    <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
+      <v-spacer></v-spacer>
 
-    <v-spacer></v-spacer>
-    <v-toolbar-items >
-      <v-expand-x-transition > 
-        <v-text-field
+      <v-toolbar-items >
+        <v-expand-x-transition > 
+          <v-text-field
             v-if="exibirCampoBusca"
             transition="slide-x-transition"
             label="Buscador" 
             v-model="palavraBuscada"
-            />
-      </v-expand-x-transition>
-      
-      <v-btn icon  @click="buscar()" slot="activator">
-        <v-icon>search</v-icon>
-      </v-btn>
-      
-      <div class="text-xs-center">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }" >
-            <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
-          </template>
-          <v-list>
+          />
+        </v-expand-x-transition>
+        
+        <v-btn icon  @click="buscar()" slot="activator">
+          <v-icon>search</v-icon>
+        </v-btn>
+        
+        <div class="text-xs-center">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }" >
+              <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
+            </template>
+            <v-list>
               <v-list-tile
-                  v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
-                  :key="index"
-                  @click="alterarUsuario(usuario)"
-                  >
-                    <v-list-tile-title class="menu" >
-                        <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
-                    </v-list-tile-title>
+                v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
+                :key="index"
+                @click="alterarUsuario(usuario)"
+              >
+                <v-list-tile-title class="menu" >
+                  <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
+                </v-list-tile-title>
               </v-list-tile>
+
               <v-list-tile @click="sair()">
                 <v-list-tile-title>Sair</v-list-tile-title>
               </v-list-tile>
-          </v-list>
-        </v-menu>
-      </div>
-    </v-toolbar-items>
-  </v-toolbar>
 
-    
+            </v-list>
+          </v-menu>
+        </div>
+      </v-toolbar-items>
+    </v-toolbar>
+      
     <router-view></router-view>
-    
+      
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
@@ -97,7 +97,6 @@
           v-for="item in items"
           :key="item.title"
           @click="irPara(item)"
-          
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -118,15 +117,15 @@ export default {
   name: 'App',
   data () {
     return {
-    drawer: null,
-    items: [
-    { title: 'Home', icon: 'home', rota:'categorias' },
-    { title: 'Categorias', icon: 'style',rota:'categoria-listagem' },
-    { title: 'Filmes', icon: 'movie_creation',rota:'filme-listagem'  }
-    ],
-    mini: false,
-    right: null,
-    exibirCampoBusca: false
+      drawer: null,
+      items: [
+      { title: 'Home', icon: 'home', rota:'categorias' },
+      { title: 'Categorias', icon: 'style',rota:'categoria-listagem' },
+      { title: 'Filmes', icon: 'movie_creation',rota:'filme-listagem'  }
+      ],
+      mini: false,
+      right: null,
+      exibirCampoBusca: false
     }
   },
   computed:{
@@ -142,10 +141,8 @@ export default {
       set(value){
         this.setPalavraBuscada(value);
       }
-
     }
   },
-  
   methods: {
     ...mapMutations([
       'setUsuario',
@@ -153,7 +150,6 @@ export default {
     ]),
     alterarUsuario(usuario) {
       this.setUsuario(usuario);
-      
     },
     irPara(item){
       this.$router.push('/'+item.rota);
@@ -165,31 +161,32 @@ export default {
     buscar(){
       this.exibirCampoBusca = !this.exibirCampoBusca;
     }
+  },
+  mounted(){
+    if( !this.getUsuario.nome ){
+      this.$router.push('/');
+    }
   }
 }
 </script>
 <style>
-.imagem-usuario{
-  width: 49px;
-  height: 49px;
-  display:flex;
-  align-items: center;
-}
-.mini-menu{
-  width: 24px;
-  margin-right: 8px;
-  
-}
+  html{
+    overflow-y: auto !important;
+  }
+  .imagem-usuario{
+    width: 49px;
+    height: 49px;
+    display:flex;
+    align-items: center;
+  }
+  .mini-menu{
+    width: 24px;
+    margin-right: 8px;
+  }
 
-.menu, .v-toolbar__items{
-  display: flex;
-  align-items: center;
-  justify-content: space-evelyn;
-}
-
-body
-{
-  height: 1000px;
-}
-
+  .menu, .v-toolbar__items{
+    display: flex;
+    align-items: center;
+    justify-content: space-evelyn;
+  }
 </style>
