@@ -16,6 +16,9 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items >
+          <v-flex>
+            <v-layout hidden-xs-only>
+
         <v-expand-x-transition > 
           <v-text-field
             v-if="exibirCampoBusca"
@@ -24,11 +27,15 @@
             v-model="palavraBuscada"
           />
         </v-expand-x-transition>
-        
+    
         <v-btn icon  @click="buscar()" slot="activator">
           <v-icon>search</v-icon>
         </v-btn>
         
+        </v-layout>
+        </v-flex>
+        
+
         <div class="text-xs-center">
           <v-menu offset-y>
             <template v-slot:activator="{ on }" >
@@ -54,8 +61,20 @@
         </div>
       </v-toolbar-items>
     </v-toolbar>
-      
+    <v-flex xs8 class="mx-5">
+          <v-layout align-start justify-center fill-height hidden-sm-and-up >
+         <v-text-field
+            label="Buscador" 
+            v-model="palavraBuscada"
+          />
+          </v-layout>
+          <v-flex>
+          <v-layout>
+    </v-layout>
+    </v-flex>
+        </v-flex>
     <router-view></router-view>
+      
       
     <v-navigation-drawer
       v-model="drawer"
