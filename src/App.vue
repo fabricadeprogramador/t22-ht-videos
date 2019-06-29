@@ -58,21 +58,9 @@
         </div>
       </v-toolbar-items>
     </v-toolbar>
-    <!-- <v-flex xs8 class="mx-5">
-      <v-layout align-start justify-center fill-height hidden-sm-and-up >
-        <v-text-field
-          label="Buscador" 
-          v-model="palavraBuscada"
-        />
-      </v-layout>
-      <v-flex>
-    <v-layout>
-    </v-layout>
-    </v-flex>
-        </v-flex> -->
+
     <router-view></router-view>
-      
-      
+
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
