@@ -59,13 +59,33 @@
 </script>
 
 <style>
+    .video {
+    width: 300px;
+    display: flex;
+    max-width: 300px;
+    min-width: 300px;
+    box-sizing: border-box;
+    justify-content: center;
+    position: relative;
+  }
+  .video + .video {
+    margin-left: 5px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .titulo {
     position: absolute;
     width: 100%;
     text-align: left;
     bottom: 0;
     text-indent: 10px;
   }
-
+  .titulo span {
+    width: 100%;
+  }
   .botao-play {
     font-size: 45px;
     align-self: center;
@@ -73,7 +93,6 @@
     position: absolute;
     display: none;
   }
-
   .video:hover .botao-play {
     display: block;
   }

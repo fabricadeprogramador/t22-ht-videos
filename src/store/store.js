@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import listaCategorias from '../data/categorias.json'
 import http from '../httpHelper'
 import api from '../api'
 
