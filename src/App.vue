@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
-    <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+    <v-toolbar dark  v-if=" getUsuario.nome != undefined"  
+    :class="{'buscador-aberto':exibirCampoBusca}">
       <v-toolbar-side-icon>
         <v-layout justify-center>
           <v-icon
@@ -15,15 +16,15 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items >
-          <v-flex>
-            <v-layout hidden-xs-only>
-
+      <v-toolbar-items 
+       
+      >
         <v-expand-x-transition > 
           <v-text-field
             v-if="exibirCampoBusca"
             transition="slide-x-transition"
             label="Buscador" 
+            solo
             v-model="palavraBuscada"
           />
         </v-expand-x-transition>
@@ -31,10 +32,6 @@
         <v-btn icon  @click="buscar()" slot="activator">
           <v-icon>search</v-icon>
         </v-btn>
-        
-        </v-layout>
-        </v-flex>
-        
 
         <div class="text-xs-center">
           <v-menu offset-y>
@@ -61,18 +58,18 @@
         </div>
       </v-toolbar-items>
     </v-toolbar>
-    <v-flex xs8 class="mx-5">
-          <v-layout align-start justify-center fill-height hidden-sm-and-up >
-         <v-text-field
-            label="Buscador" 
-            v-model="palavraBuscada"
-          />
-          </v-layout>
-          <v-flex>
-          <v-layout>
+    <!-- <v-flex xs8 class="mx-5">
+      <v-layout align-start justify-center fill-height hidden-sm-and-up >
+        <v-text-field
+          label="Buscador" 
+          v-model="palavraBuscada"
+        />
+      </v-layout>
+      <v-flex>
+    <v-layout>
     </v-layout>
     </v-flex>
-        </v-flex>
+        </v-flex> -->
     <router-view></router-view>
       
       
@@ -207,5 +204,24 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-evelyn;
+  }
+
+  @media only screen and (max-width: 640px)
+  {
+    .imagem-usuario {
+      width: 36px;
+      height: 36px;
+    }
+
+    .buscador-aberto .v-toolbar__content .v-toolbar__items{
+      width: 100%;
+    }
+    .buscador-aberto .v-toolbar__content .v-toolbar__title,
+    .buscador-aberto .v-toolbar__content .spacer{
+      display: none;
+    }
+    .buscador-aberto .v-toolbar__content .v-toolbar__items .v-input{
+      height: 48px;
+    }
   }
 </style>
