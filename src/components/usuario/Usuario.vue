@@ -1,24 +1,23 @@
 <template>
-
-<div class="div-main flex">
+  <div class="div-main flex">
     <div class="div-second flex">
-  <v-flex xs8>
-     <v-layout  align-center justify-center row >
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
       <span id="span-texto">Quem está assistindo?</span>
-     </v-layout>
-  </v-flex>
+      </v-layout>
+    </v-flex>
 
-        <v-flex xs8 sm12 class="mt-4">
-        <v-layout wrap align-center justify-center row >
+    <v-flex xs8 sm12 class="mt-4">
+      <v-layout wrap align-center row justify-center>
         <div class="div-usuario mx-2" v-for="usuario in getUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
           <img class="icon-usuario" :src="usuario.imagem">
           <span class="nome-usuario">{{ usuario.nome }}</span>
         </div>
-        </v-layout>
-        </v-flex>
-        </div>
-      </div>
-
+      </v-layout>
+    </v-flex>
+  </div>
+  
+  </div>
 </template>
 
 <script>
@@ -111,4 +110,12 @@ export default {
     font-size: 15pt;
     color: gray;
   }
+
+  @media only screen and (max-width: 640px)
+  {
+    #span-texto {
+      font-size: 30px;
+    }
+  }
+
 </style>
