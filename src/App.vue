@@ -1,60 +1,62 @@
 <template>
   <v-app dark>
-  <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+    <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+      <v-toolbar-side-icon>
+        <v-layout justify-center>
+          <v-icon
+            dark
+            @click.stop="drawer = !drawer">
+            dehaze
+          </v-icon>
+        </v-layout>
+      </v-toolbar-side-icon>
 
-    <v-toolbar-side-icon>
-      <v-layout justify-center>
-        <v-icon
-          dark
-          @click.stop="drawer = !drawer"
-        >
-          dehaze
-        </v-icon>
-      </v-layout>
-    </v-toolbar-side-icon>
+      <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
 
-    <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
+      <v-spacer></v-spacer>
 
-    <v-spacer></v-spacer>
-    <v-flex xs12 md3>
-    <v-text-field 
-    label="Buscador"
-    v-model="palavraBuscada" ></v-text-field>
-
-        </v-flex>
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-  
-    <div class="text-xs-center">
-    <v-menu offset-y>
-      <template v-slot:activator="{ on }" >
-        <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
-      </template>
-      <v-list>
-          <v-list-tile
-              v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
-              :key="index"
-              @click="alterarUsuario(usuario)"
+      <v-toolbar-items >
+        <v-expand-x-transition > 
+          <v-text-field
+            v-if="exibirCampoBusca"
+            transition="slide-x-transition"
+            label="Buscador" 
+            v-model="palavraBuscada"
+          />
+        </v-expand-x-transition>
+        
+        <v-btn icon  @click="buscar()" slot="activator">
+          <v-icon>search</v-icon>
+        </v-btn>
+        
+        <div class="text-xs-center">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }" >
+              <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
+            </template>
+            <v-list>
+              <v-list-tile
+                v-for="(usuario, index) in getListaUsuarios.filter(function(usuario) { return usuario.nome != getUsuario.nome; })"
+                :key="index"
+                @click="alterarUsuario(usuario)"
               >
                 <v-list-tile-title class="menu" >
-                    <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
+                  <img :src="usuario.imagem" class="mini-menu">{{ usuario.nome }}
                 </v-list-tile-title>
-                            
-          </v-list-tile>
-                              
-          <v-list-tile @click="sair()">
+              </v-list-tile>
 
+              <v-list-tile @click="sair()">
                 <v-list-tile-title>Sair</v-list-tile-title>
-                    
-          </v-list-tile>
-      </v-list>
-    </v-menu>
-  </div>
-  </v-toolbar>
-    
+              </v-list-tile>
+
+            </v-list>
+          </v-menu>
+        </div>
+      </v-toolbar-items>
+    </v-toolbar>
+      
     <router-view></router-view>
-    
+      
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
@@ -94,7 +96,7 @@
         <v-list-tile
           v-for="item in items"
           :key="item.title"
-          
+          @click="irPara(item)"
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -115,33 +117,49 @@ export default {
   name: 'App',
   data () {
     return {
-    drawer: null,
-    items: [
-    { title: 'Home', icon: 'home' },
-    { title: 'Categorias', icon: 'style' },
-    { title: 'Vídeo', icon: 'movie_creation' }
-    ],
-    mini: false,
-    right: null
+      drawer: null,
+      items: [
+      { title: 'Home', icon: 'home', rota:'categorias' },
+      { title: 'Categorias', icon: 'style',rota:'categoria-listagem' },
+      { title: 'Filmes', icon: 'movie_creation',rota:'filme-listagem'  }
+      ],
+      mini: false,
+      right: null,
+      exibirCampoBusca: false
     }
   },
   computed:{
     ...mapGetters([
       'getUsuario',
-      'getListaUsuarios'
-    ])
+      'getListaUsuarios',
+      'getPalavraBuscada'
+    ]),
+    palavraBuscada: {
+      get(){
+        return this.getPalavraBuscada;
+      },
+      set(value){
+        this.setPalavraBuscada(value);
+      }
+    }
   },
-  
   methods: {
     ...mapMutations([
       'setUsuario'
     ]),
     alterarUsuario(usuario) {
       this.setUsuario(usuario);
-      
+    },
+    irPara(item){
+      this.$router.push('/'+item.rota);
     },
     sair() {
       this.setUsuario({});
+      this.$router.push('/');
+    }
+  },
+  mounted(){
+    if( !this.getUsuario.nome ){
       this.$router.push('/');
     }
   }
@@ -149,26 +167,23 @@ export default {
 </script>
 
 <style>
-.imagem-usuario{
-  width: 49px;
-  display:flex;
-  align-items: center;
-}
-.mini-menu{
-  width: 24px;
-  margin-right: 8px;
-  
-}
+  html{
+    overflow-y: auto !important;
+  }
+  .imagem-usuario{
+    width: 49px;
+    height: 49px;
+    display:flex;
+    align-items: center;
+  }
+  .mini-menu{
+    width: 24px;
+    margin-right: 8px;
+  }
 
-.menu{
-  display: flex;
-  align-items: center;
-  justify-content: space-evelyn;
-}
-
-body
-{
-  height: 1000px;
-}
-
+  .menu, .v-toolbar__items{
+    display: flex;
+    align-items: center;
+    justify-content: space-evelyn;
+  }
 </style>
