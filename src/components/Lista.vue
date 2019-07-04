@@ -5,13 +5,30 @@
       Inserir
     </v-btn>
     <v-list two-line>
-      <template v-for="(item, index ) in items">
+      <template v-for="(item, index) in items">
 
         <v-divider v-if="index > 0 "
           :key="index"
         ></v-divider>
 
-        <v-list-tile  :key="item._id"  avatar >
+        <v-list-tile :key="item._id" avatar>
+        <!-- solução antiga para exibir as thumbs dos vídeos na tela de filmes 
+          <div v-if="item.id != undefined"> 
+            <v-avatar size="90px" id="avatar"> 
+              <img :src="'https://img.youtube.com/vi/' + item.id + '/maxresdefault.jpg'">
+            </v-avatar>
+
+            <v-list-tile-content>
+                <v-list-tile-title class="list-tile-title">{{ item.titulo }}</v-list-tile-title>
+            </v-list-tile-content>
+            </div>
+
+            <div v-else> 
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item }}</v-list-tile-title>
+              </v-list-tile-content>
+            </div> 
+          -->
           <v-list-tile-content>
               <v-list-tile-title>{{ item.titulo || item.nome }}</v-list-tile-title>
           </v-list-tile-content>

@@ -10,14 +10,14 @@
       />
       <v-icon class="botao-play" color="white" @click="play()" :id="filme.chave">play_circle_outline</v-icon>
       <div class="titulo">
-        <span>{{filme.titulo}}</span>
+        <span>{{ filme.titulo }}</span>
       </div>
     </div>
    
     <div v-else>
       <iframe 
         :id="filme.chave"
-        :src="'https://www.youtube.com/embed/'+filme.chave+'?autoplay=1'"
+        :src="'https://www.youtube.com/embed/' + filme.chave + '?autoplay=1'"
         :width="300" 
         :height="170"
         :frameborder="0"
@@ -68,14 +68,17 @@
     justify-content: center;
     position: relative;
   }
+
   .video + .video {
     margin-left: 5px;
   }
+
   img {
     width: 100%;
     height: 100%;
     position: relative;
   }
+
   .titulo {
     position: absolute;
     width: 100%;
@@ -83,9 +86,11 @@
     bottom: 0;
     text-indent: 10px;
   }
+
   .titulo span {
     width: 100%;
   }
+
   .botao-play {
     font-size: 45px;
     align-self: center;
@@ -93,6 +98,7 @@
     position: absolute;
     display: none;
   }
+  
   .video:hover .botao-play {
     display: block;
   }

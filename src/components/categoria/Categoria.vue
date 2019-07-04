@@ -95,7 +95,9 @@ export default {
 
   #icon-forward {
     position: absolute;
+   
     z-index: 1;
-    /* left: 1240px; */
   }
+
+  
 </style>
