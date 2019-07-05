@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
-    <v-toolbar dark  v-if=" getUsuario.nome != undefined" >
+    <v-toolbar dark  v-if=" getUsuario.nome != undefined"  
+    :class="{'buscador-aberto':exibirCampoBusca}">
       <v-toolbar-side-icon>
         <v-layout justify-center>
           <v-icon
@@ -15,20 +16,23 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items >
+      <v-toolbar-items 
+       
+      >
         <v-expand-x-transition > 
           <v-text-field
             v-if="exibirCampoBusca"
             transition="slide-x-transition"
             label="Buscador" 
+            solo
             v-model="palavraBuscada"
           />
         </v-expand-x-transition>
-        
+    
         <v-btn icon  @click="buscar()" slot="activator">
           <v-icon>search</v-icon>
         </v-btn>
-        
+
         <div class="text-xs-center">
           <v-menu offset-y>
             <template v-slot:activator="{ on }" >
@@ -54,9 +58,9 @@
         </div>
       </v-toolbar-items>
     </v-toolbar>
-      
+
     <router-view></router-view>
-      
+
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="mini"
@@ -169,7 +173,6 @@ export default {
   }
 }
 </script>
-
 <style>
   html{
     overflow-y: auto !important;
@@ -189,5 +192,24 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-evelyn;
+  }
+
+  @media only screen and (max-width: 640px)
+  {
+    .imagem-usuario {
+      width: 36px;
+      height: 36px;
+    }
+
+    .buscador-aberto .v-toolbar__content .v-toolbar__items{
+      width: 100%;
+    }
+    .buscador-aberto .v-toolbar__content .v-toolbar__title,
+    .buscador-aberto .v-toolbar__content .spacer{
+      display: none;
+    }
+    .buscador-aberto .v-toolbar__content .v-toolbar__items .v-input{
+      height: 48px;
+    }
   }
 </style>

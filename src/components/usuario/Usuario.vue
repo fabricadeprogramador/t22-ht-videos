@@ -1,14 +1,22 @@
 <template>
   <div class="div-main flex">
     <div class="div-second flex">
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
       <span id="span-texto">Quem está assistindo?</span>
-      <div class="div-usuarios flex">
-        <div class="div-usuario" v-for="usuario in getUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
+      </v-layout>
+    </v-flex>
+
+    <v-flex xs8 sm12 class="mt-4">
+      <v-layout wrap align-center row justify-center>
+        <div class="div-usuario mx-2" v-for="usuario in getUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
           <img class="icon-usuario" :src="usuario.imagem">
           <span class="nome-usuario">{{ usuario.nome }}</span>
         </div>
-        </div>
-      </div>
+      </v-layout>
+    </v-flex>
+  </div>
+  
   </div>
 </template>
 
@@ -56,11 +64,9 @@ export default {
     position: relative; 
   }
 
-  .div-usuario {
-    height: 190px;
-    padding: 20px;
-    width: 160px;
-  }
+  /* .div-usuario{
+    width: 140px
+  } */
 
   .div-usuario:hover span {
     color: white;
@@ -95,7 +101,7 @@ export default {
 
   #span-texto {
     color: white;
-    font-size: 40pt;
+    font-size: 40px;
   }
 
   .nome-usuario {
@@ -104,4 +110,12 @@ export default {
     font-size: 15pt;
     color: gray;
   }
+
+  @media only screen and (max-width: 640px)
+  {
+    #span-texto {
+      font-size: 30px;
+    }
+  }
+
 </style>
