@@ -1,13 +1,18 @@
 <template>
   <div class="listagem">
-    <h1>{{ titulo }}</h1>
     <v-flex xs12>
-      <v-btn fab dark color="indigo" @click="inserir">
+      <v-layout align-center justify-center row>
+        <h1>{{ titulo }}</h1>
+      </v-layout>
+    </v-flex>
+    
+    <v-flex xs12>
+      <v-btn class="adicionar" fab dark color="indigo" @click="inserir">
         <v-icon dark>add</v-icon>
       </v-btn>
     </v-flex>
     
-    <v-list two-line>
+    <v-list v-if="items.length !== 0" two-line>
       <template v-for="(item, index) in items">
 
         <v-divider v-if="index > 0 "
@@ -48,6 +53,9 @@
         </v-list-tile>
       </template>
     </v-list>
+    <div v-else class="mensagem-lista-vazia">
+      <span>Nenhum item encontrado!</span>
+    </div>
   </div>
 </template>
 
@@ -78,11 +86,22 @@ export default {
 </script>
 
 <style >
-  .listagem{
-    padding: 16px;
-  }
   h1 {
     margin-top: 10px;
     margin-bottom: 15px;
+  }
+
+  .adicionar{
+    height: 48px;
+    width: 48px;
+    margin-bottom: 15px !important;
+  }
+
+  .mensagem-lista-vazia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 16pt;
   }
 </style>

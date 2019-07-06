@@ -3,9 +3,8 @@
     <div class="video" v-if="exibirVideo === false" >
       <img 
         :src="'https://img.youtube.com/vi/'+ filme.chave +'/maxresdefault.jpg'"
-        :width="300" 
-        :height="170"
         :id="filme.chave"
+        class="thumb"
       />
       <v-icon class="botao-play" color="white" @click="play()" :id="filme.chave">play_circle_outline</v-icon>
       <div class="titulo">
@@ -15,10 +14,9 @@
    
     <div v-else>
       <iframe 
+        class="iframe-filme"
         :id="filme.chave"
         :src="'https://www.youtube.com/embed/' + filme.chave + '?autoplay=1'"
-        :width="300" 
-        :height="170"
         :frameborder="0"
         allow="autoplay; fullscreen">
       </iframe>
@@ -115,6 +113,13 @@
     .botao-play {
     font-size: 25px;
     display: block;
+    }
+    
+    .iframe-filme, .thumb{
+     height: 95px;
+     width: 170px;
+
+
     }
   }
 </style>

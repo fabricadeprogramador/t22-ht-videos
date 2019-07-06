@@ -1,11 +1,7 @@
 <template>
   <div class="formulario">
-    <v-flex xs12>
-      <v-layout  align-center justify-center row >
-      <span class="span-texto">Filmes</span>
-      </v-layout>
-    </v-flex>
     <lista
+      titulo="Filmes"
       :items="getFilmes"
       @editar="editar" 
       @deletar="deletar"

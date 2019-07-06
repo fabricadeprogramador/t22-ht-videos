@@ -26,8 +26,10 @@
         required
       />
 
-      <v-btn color="success" @click="salvar">Salvar</v-btn>
-      <v-btn outline color="white" @click="voltar">Voltar</v-btn>
+      <div class="botoes">
+        <v-btn outline color="white" @click="voltar">Voltar</v-btn>
+        <v-btn color="success" @click="salvar">Salvar</v-btn> 
+      </div>
     </form>
   </div>
 </template>
@@ -90,8 +92,20 @@ export default {
   body {
     font-family: 'Helvetica';
   } 
+
   .formulario{
     width: 50%;
-    margin: auto;
+    margin: 0 auto;
+  }
+
+  .botoes {
+      display: flex;
+      justify-content: space-between; 
+      width: 100%;
+      padding: 8px 0;
+  }
+
+  .v-btn {
+    margin: 0px;
   }
 </style>
