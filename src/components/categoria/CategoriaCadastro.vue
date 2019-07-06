@@ -1,31 +1,37 @@
 <template>
   <div class="formulario" >
-    <span id="span-texto">Cadastro de Categorias</span>
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
+      <span class="span-texto">Cadastro de Categoria</span>
+      </v-layout>
+    </v-flex>
     <form>
       <v-text-field
         v-model="categoria.nome"
         v-validate="'required|min:4'"
-        :counter="20"
+        :counter="30"
         :error-messages="errors.collect('Genero')"
         label="Título do genero"
-        required
-      ></v-text-field>
-
+        required>
+      </v-text-field>
+      
       <v-list subheader two-line>
         <v-subheader>Selecione um ou mais filmes para a categoria</v-subheader>
         <v-list-tile v-for="(filme, index) in filmesSelecionados" :key="index">
           <v-list-tile-action>
             <v-checkbox v-model="filme.selecionado"></v-checkbox>
           </v-list-tile-action>
-
           <v-list-tile-content>
             <v-list-tile-title>{{ filme.titulo }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>  
       </v-list>
-      
-      <v-btn color="success" @click="salvar">Salvar</v-btn>
-      <v-btn outline color="white" @click="voltar">Voltar</v-btn>
+      <!--<v-flex  xs6 >
+        <v-btn class="btnVoltar" outline color="white" @click="voltar">Voltar</v-btn>
+      </v-flex>-->
+      <v-flex  xs3 xl12 class="btnSalvar">
+        <v-btn  color="success" @click="salvar">Salvar</v-btn> 
+        </v-flex>
     </form>
   </div>
 </template>
@@ -111,8 +117,33 @@ export default {
     font-family: 'Helvetica';
   }
 
+ 
+
   .formulario{
-    width: 50%;
+    width: 70%;
     margin: auto;
+  }
+
+  .btnSalvar{
+      
+      float: right;
+      padding: 5px;
+    }
+  .btnVoltar{
+    background-color:blueviolet;
+  }
+
+
+
+   @media only screen and (max-width: 640px)
+  {
+    .span-texto {
+      font-size: 30px;
+    }
+    .formulario{
+      
+      width: 80%;
+    }
+   
   }
 </style>

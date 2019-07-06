@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div class="formulario">
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
+      <span class="span-texto">Categorias</span>
+      </v-layout>
+    </v-flex>
     <lista
-      titulo="Categorias"
       :items="getCategorias"
       @editar="editar" 
       @deletar="deletar"

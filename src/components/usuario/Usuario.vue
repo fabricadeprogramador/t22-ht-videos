@@ -1,14 +1,22 @@
 <template>
   <div class="div-main flex">
     <div class="div-second flex">
-      <span id="span-texto">Quem está assistindo?</span>
-      <div class="div-usuarios flex">
-        <div class="div-usuario" v-for="usuario in getUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
+      <span class="span-texto">Quem está assistindo?</span>
+      </v-layout>
+    </v-flex>
+
+    <v-flex xs8 sm12 class="mt-4">
+      <v-layout wrap align-center row justify-center>
+        <div class="div-usuario mx-2" v-for="usuario in getUsuarios" :key="usuario.id" @click="selecionarUsuario(usuario)">
           <img class="icon-usuario" :src="usuario.imagem">
           <span class="nome-usuario">{{ usuario.nome }}</span>
         </div>
-        </div>
-      </div>
+      </v-layout>
+    </v-flex>
+  </div>
+  
   </div>
 </template>
 
@@ -55,60 +63,48 @@ export default {
     min-width: 84px;
     position: relative; 
   }
-
-  .div-usuario {
-    height: 190px;
-    padding: 20px;
-    width: 160px;
-  }
-
+  /* .div-usuario{
+    width: 140px
+  } */
   .div-usuario:hover span {
     color: white;
     cursor: pointer;
   }
-
   .div-usuario:hover img {
     border: 4px solid white;
     cursor: pointer;
   }
-
   .div-second {
     text-align: center;
     flex-direction: column; 
     width: 100%;
   }
-
   .div-usuarios {
     display: flex;
     cursor: default;
     justify-content: center;
     align-items: center;
-
   }
-
   .flex {
     display: flex;
     cursor: default;
     justify-content: center;
     align-items: center;
   }
-
-  #span-texto {
+  .span-texto {
     color: white;
-    font-size: 40pt;
+    font-size: 40px;
   }
-
   .nome-usuario {
     display: block;
     text-align: center;
     font-size: 15pt;
     color: gray;
   }
-
   @media only screen and (max-width: 640px)
   {
-    #span-texto {
-    font-size: 20pt;
-  }
+    .span-texto {
+      font-size: 30px;
+    }
   }
 </style>

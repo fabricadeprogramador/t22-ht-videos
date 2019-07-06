@@ -1,11 +1,15 @@
 <template>
   <div class="formulario" >
-    <span id="span-texto">Cadastro de Filmes</span>   
+    <v-flex xs12>
+      <v-layout  align-center justify-center row >
+      <span class="span-texto">Cadastro de Filme</span>
+      </v-layout>
+    </v-flex>
     <form>
       <v-text-field
         v-model="filme.titulo"
-        v-validate="'required|max:20'"
-        :counter="20"
+        v-validate="'required|max:30'"
+        :counter="30"
         :error-messages="errors.collect('titulo')"
         label="Título do Filme"
         data-vv-name="titulo"
@@ -38,11 +42,13 @@ export default {
   computed:{
     ...mapGetters([
       'getNomeCategoria',
-      'getFilme'
+      'getFilme',
+      'getCategorias'
     ])
   },
   data(){
     return{
+      categoriaSelecionadas :[],
       filme:{
         titulo: '',
         chave: ''
