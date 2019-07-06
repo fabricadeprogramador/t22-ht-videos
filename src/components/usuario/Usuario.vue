@@ -63,9 +63,7 @@ export default {
     min-width: 84px;
     position: relative; 
   }
-  /* .div-usuario{
-    width: 140px
-  } */
+
   .div-usuario:hover span {
     color: white;
     cursor: pointer;
