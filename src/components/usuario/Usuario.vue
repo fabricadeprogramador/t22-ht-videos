@@ -3,7 +3,7 @@
     <div class="div-second flex">
     <v-flex xs12>
       <v-layout  align-center justify-center row >
-      <span id="span-texto">Quem está assistindo?</span>
+      <span class="span-texto">Quem está assistindo?</span>
       </v-layout>
     </v-flex>
 
@@ -64,58 +64,45 @@ export default {
     position: relative; 
   }
 
-  /* .div-usuario{
-    width: 140px
-  } */
-
   .div-usuario:hover span {
     color: white;
     cursor: pointer;
   }
-
   .div-usuario:hover img {
     border: 4px solid white;
     cursor: pointer;
   }
-
   .div-second {
     text-align: center;
     flex-direction: column; 
     width: 100%;
   }
-
   .div-usuarios {
     display: flex;
     cursor: default;
     justify-content: center;
     align-items: center;
-
   }
-
   .flex {
     display: flex;
     cursor: default;
     justify-content: center;
     align-items: center;
   }
-
-  #span-texto {
+  .span-texto {
     color: white;
     font-size: 40px;
   }
-
   .nome-usuario {
     display: block;
     text-align: center;
     font-size: 15pt;
     color: gray;
   }
-
   @media only screen and (max-width: 640px)
   {
-    #span-texto {
+    .span-texto {
       font-size: 30px;
     }
   }
-
 </style>

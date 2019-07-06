@@ -187,20 +187,17 @@ export default {
     width: 24px;
     margin-right: 8px;
   }
-
   .menu, .v-toolbar__items{
     display: flex;
     align-items: center;
     justify-content: space-evelyn;
   }
-
   @media only screen and (max-width: 640px)
   {
     .imagem-usuario {
       width: 36px;
       height: 36px;
     }
-
     .buscador-aberto .v-toolbar__content .v-toolbar__items{
       width: 100%;
     }

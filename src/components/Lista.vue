@@ -1,9 +1,12 @@
 <template>
   <div class="listagem">
     <h1>{{ titulo }}</h1>
-    <v-btn @click="inserir" color="success">
-      Inserir
-    </v-btn>
+    <v-flex xs12>
+      <v-btn fab dark color="indigo" @click="inserir">
+        <v-icon dark>add</v-icon>
+      </v-btn>
+    </v-flex>
+    
     <v-list two-line>
       <template v-for="(item, index ) in items">
 
@@ -61,7 +64,6 @@ export default {
   .listagem{
     padding: 16px;
   }
-
   h1 {
     margin-top: 10px;
     margin-bottom: 15px;
