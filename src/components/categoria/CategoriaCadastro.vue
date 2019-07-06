@@ -26,12 +26,11 @@
           </v-list-tile-content>
         </v-list-tile>  
       </v-list>
-      <!--<v-flex  xs6 >
-        <v-btn class="btnVoltar" outline color="white" @click="voltar">Voltar</v-btn>
-      </v-flex>-->
-      <v-flex  xs3 xl12 class="btnSalvar">
-        <v-btn  color="success" @click="salvar">Salvar</v-btn> 
-        </v-flex>
+  
+      <div class="botoes">
+        <v-btn outline color="white" @click="voltar">Voltar</v-btn>
+        <v-btn color="success" @click="salvar">Salvar</v-btn> 
+      </div>
     </form>
   </div>
 </template>
@@ -117,24 +116,22 @@ export default {
     font-family: 'Helvetica';
   }
 
- 
-
   .formulario{
     width: 70%;
-    margin: auto;
+    margin: 0 auto;
   }
 
-  .btnSalvar{
-      
-      float: right;
-      padding: 5px;
-    }
-  .btnVoltar{
-    background-color:blueviolet;
+  .botoes{
+      display: flex;
+      justify-content: space-between; 
+      width: 100%;
+      padding: 8px 0;
   }
 
-
-
+  .v-btn {
+    margin: 0px;
+  }
+  
    @media only screen and (max-width: 640px)
   {
     .span-texto {

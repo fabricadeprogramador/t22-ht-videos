@@ -11,16 +11,16 @@
         <v-icon 
           color=white 
           x-large 
-          id="seta-direita" 
-          @click="moverVideosDireita(categoria)"> 
-            keyboard_arrow_right
+          id="seta-esquerda" 
+          @click="moverVideosEsquerda(categoria)"> 
+            keyboard_arrow_left
         </v-icon>
         <v-icon 
           color=white 
           x-large 
-          id="seta-esquerda" 
-          @click="moverVideosEsquerda(categoria)"> 
-            keyboard_arrow_left
+          id="seta-direita" 
+          @click="moverVideosDireita(categoria)"> 
+            keyboard_arrow_right
         </v-icon>
         <div v-for="(video, index) of categoria.filmes" :key="video.id"  >
           <filme 
@@ -72,11 +72,6 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-x: auto;
-    padding-bottom: 20px;
-    background: #303030;
-    margin-top: 30px;
-    margin-bottom: -50px;  /*this was added */
-    bottom: 20px;  /*this was added*/
   }
 
   .videos {
@@ -114,7 +109,7 @@ export default {
   #seta-esquerda {
     position: absolute;
     z-index: 1;
-    right: 10px;
+    left: 10px;
     align-self: center;
     justify-content: center;
   }
@@ -125,7 +120,7 @@ export default {
 
   @media only screen and (max-width: 640px) {
     .videos {
-      height: 137px; /* se diminuir pra 95px as setas ficam centralizadas, mas buga o resto */
+      height: 95px; 
       margin-top: 32px;
     }
 
@@ -143,11 +138,11 @@ export default {
     }
 
     #seta-esquerda {
-      right: -4px;
+      left: -4px;
     }
 
     #seta-direita {
-      left: -4px;
+      right: -4px;
     }
   }
 </style>
