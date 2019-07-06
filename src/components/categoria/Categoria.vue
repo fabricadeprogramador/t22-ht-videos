@@ -1,19 +1,26 @@
 <template>
-  <div>
+  <div class="main-categoria">
     <div v-for="categoria of getListaCategorias" :key="categoria._id" 
       class="categoria" 
       :id="categoria._id"
     >
       <div class="nome-categoria">
-        <span class="span-categoria">{{categoria.nome}}</span>
+        <span class="span-categoria">{{ categoria.nome }}</span>
       </div>
-      <div class="videos"  >
+      <div class="videos">
         <v-icon 
           color=white 
           x-large 
-          id="icon-forward" 
-          @click="moverVideos(categoria)" > 
+          id="seta-direita" 
+          @click="moverVideosDireita(categoria)"> 
             keyboard_arrow_right
+        </v-icon>
+        <v-icon 
+          color=white 
+          x-large 
+          id="seta-esquerda" 
+          @click="moverVideosEsquerda(categoria)"> 
+            keyboard_arrow_left
         </v-icon>
         <div v-for="(video, index) of categoria.filmes" :key="video.id"  >
           <filme 
@@ -29,6 +36,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import Filme from '@/components/Filme'
+
 export default {
   components: {
     Filme
@@ -49,8 +57,11 @@ export default {
     ...mapActions([
       'buscarCategorias'
     ]),
-    moverVideos(categoria){
-      document.getElementById(categoria._id).scrollTo(280,0);
+    moverVideosDireita(categoria) {
+      document.getElementById(categoria._id).scrollLeft += 310;
+    },
+    moverVideosEsquerda(categoria) {
+      document.getElementById(categoria._id).scrollLeft -= 310;
     }
   }
 }
@@ -93,11 +104,50 @@ export default {
     margin-bottom: 5px;
   }
 
-  #icon-forward {
+  #seta-direita {
     position: absolute;
-   
     z-index: 1;
+    align-self: center;
+    justify-content: center;
   }
 
-  
+  #seta-esquerda {
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    align-self: center;
+    justify-content: center;
+  }
+
+  .main-categoria {
+    margin-bottom: 30px;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .videos {
+      height: 137px; /* se diminuir pra 95px as setas ficam centralizadas, mas buga o resto */
+      margin-top: 32px;
+    }
+
+    .categoria {
+      margin-top: 10px;  
+    }
+
+    .span-categoria {
+    font-size: 13pt;
+    margin-left: 7px;
+    }
+
+    .main-categoria {
+      margin-bottom: 133px;
+    }
+
+    #seta-esquerda {
+      right: -4px;
+    }
+
+    #seta-direita {
+      left: -4px;
+    }
+  }
 </style>

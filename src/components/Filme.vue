@@ -1,16 +1,15 @@
 <template>
   <v-content>
     <div class="video" v-if="exibirVideo === false" >
-     
       <img 
-        :src="'https://img.youtube.com/vi/'+filme.chave+'/maxresdefault.jpg'"
+        :src="'https://img.youtube.com/vi/'+ filme.chave +'/maxresdefault.jpg'"
         :width="300" 
         :height="170"
         :id="filme.chave"
       />
       <v-icon class="botao-play" color="white" @click="play()" :id="filme.chave">play_circle_outline</v-icon>
       <div class="titulo">
-        <span>{{ filme.titulo }}</span>
+        <span class="filmeTitulo">{{ filme.titulo }}</span>
       </div>
     </div>
    
@@ -101,5 +100,21 @@
   
   .video:hover .botao-play {
     display: block;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .video {
+      max-width: 170px;
+      min-width: 170px;
+    }
+
+    .filmeTitulo {
+      font-size: 11px;
+    }
+
+    .botao-play {
+    font-size: 25px;
+    display: block;
+    }
   }
 </style>

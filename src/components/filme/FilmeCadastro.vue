@@ -1,11 +1,11 @@
 <template>
-  <div class="formulario" >
+  <div class="formulario">
     <span id="span-texto">Cadastro de Filmes</span>   
     <form>
       <v-text-field
         v-model="filme.titulo"
-        v-validate="'required|max:20'"
-        :counter="20"
+        v-validate="'required|max:40'"
+        :counter="40"
         :error-messages="errors.collect('titulo')"
         label="Título do Filme"
         data-vv-name="titulo"
@@ -14,8 +14,8 @@
 
       <v-text-field
         v-model="filme.chave"
-        v-validate="'required|max:11'"
-        :counter="11"
+        v-validate="'required|max:12'"
+        :counter="12"
         :error-messages="errors.collect('chave')"
         label="Chave"
         data-vv-name="chave"
@@ -55,16 +55,16 @@ export default {
       'editarFilme'
     ]),
     salvar() {
-      if( this.filme._id){
+      if( this.filme._id) {
         this.editarFilme(this.filme)
-        .then( ({ data } ) => {
+        .then(({ data }) => {
           alert(data);
           this.voltar();
         })
       } 
       else {
         this.salvarFilme(this.filme)
-        .then( ({ data } ) => {
+        .then(({ data }) => {
           alert(data);
           this.voltar();
         })
