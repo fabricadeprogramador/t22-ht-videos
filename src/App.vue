@@ -12,7 +12,7 @@
         </v-layout>
       </v-toolbar-side-icon>
 
-      <v-toolbar-title class="white--text"> HT-Videos</v-toolbar-title>
+      <v-toolbar-title class="white--text" @click="redirecionarTelaInicial()">HT-Videos</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -164,7 +164,10 @@ export default {
     },
     buscar(){
       this.exibirCampoBusca = !this.exibirCampoBusca;
-    }
+    },
+    redirecionarTelaInicial(){
+      this.$router.push('/categorias');
+    },
   },
   mounted(){
     if( !this.getUsuario.nome ){
@@ -177,34 +180,45 @@ export default {
   html{
     overflow-y: auto !important;
   }
+
   .imagem-usuario{
     width: 49px;
     height: 49px;
     display:flex;
     align-items: center;
   }
+
   .mini-menu{
     width: 24px;
     margin-right: 8px;
   }
+
   .menu, .v-toolbar__items{
     display: flex;
     align-items: center;
     justify-content: space-evelyn;
   }
+
+  .white--text, .imagem-usuario{
+    cursor: pointer;
+  }
+
   @media only screen and (max-width: 640px)
   {
     .imagem-usuario {
       width: 36px;
       height: 36px;
     }
+
     .buscador-aberto .v-toolbar__content .v-toolbar__items{
       width: 100%;
     }
+
     .buscador-aberto .v-toolbar__content .v-toolbar__title,
     .buscador-aberto .v-toolbar__content .spacer{
       display: none;
     }
+
     .buscador-aberto .v-toolbar__content .v-toolbar__items .v-input{
       height: 48px;
     }

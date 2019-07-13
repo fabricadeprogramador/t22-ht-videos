@@ -28,7 +28,7 @@
 
       <div class="botoes">
         <v-btn outline color="white" @click="voltar">Voltar</v-btn>
-        <v-btn color="success" @click="salvar">Salvar</v-btn> 
+        <v-btn color="success" @click="salvar" :disabled="formularioInvalido">Salvar</v-btn> 
       </div>
     </form>
   </div>
@@ -46,14 +46,33 @@ export default {
       'getNomeCategoria',
       'getFilme',
       'getCategorias'
-    ])
+    ]),
+    formularioInvalido() {
+    
+      return this.errors.items.length > 0;
+    }
   },
   data(){
     return{
-      categoriaSelecionadas :[],
+      categoriaSelecionadas: [],
       filme:{
         titulo: '',
         chave: ''
+      },
+      dictionary: {
+        
+          filme:{
+
+            titulo: {
+            required: () => 'Your email is empty',
+              max:'hbvgcvnkl'
+          },
+          chave: {
+            required: () => 'Your name is empty'
+          }
+
+        }
+       
       }
     } 
   },
@@ -62,8 +81,12 @@ export default {
       'salvarFilme',
       'editarFilme'
     ]),
-    salvar() {
-      if( this.filme._id) {
+    salvar(){
+      this.$validator.validateAll()
+
+    },
+    salvar1() {
+      if(this.filme._id) {
         this.editarFilme(this.filme)
         .then(({ data }) => {
           alert(data);
@@ -84,6 +107,7 @@ export default {
   },
   mounted() {
     this.filme = this.getFilme;
+    this.$validator.localize(this.dictionary);
   }
 }
 </script>
