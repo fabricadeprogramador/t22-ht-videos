@@ -100,6 +100,11 @@
     display: block;
   }
 
+  .iframe-filme {
+     height: 168.75px;
+     width: 300px;
+  }
+
   @media only screen and (max-width: 640px) {
     .video {
       max-width: 170px;
@@ -111,15 +116,14 @@
     }
 
     .botao-play {
-    font-size: 25px;
-    display: block;
+      font-size: 25px;
+      display: block;
+      opacity: 0.57;
     }
     
     .iframe-filme, .thumb{
      height: 95px;
      width: 170px;
-
-
     }
   }
-</style>
+</style> 

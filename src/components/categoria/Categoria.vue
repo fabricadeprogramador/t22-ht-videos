@@ -58,10 +58,14 @@ export default {
       'buscarCategorias'
     ]),
     moverVideosDireita(categoria) {
-      document.getElementById(categoria._id).scrollLeft += 310;
+      // var color = '#000000';
+      var categoria = document.getElementById(categoria._id);
+      // categoria.style.transition = "background 2.0s linear 0s";
+      // categoria.style.background = color;
+      categoria.scrollLeft += 310;
     },
     moverVideosEsquerda(categoria) {
-      document.getElementById(categoria._id).scrollLeft -= 310;
+      var categoria = document.getElementById(categoria._id).scrollLeft -= 310;
     }
   }
 }
@@ -72,6 +76,9 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-x: auto;
+    overflow-y: hidden;
+    /* background: palevioletred;
+    height: 190px; */
   }
 
   .videos {
@@ -81,6 +88,7 @@ export default {
     justify-content: flex-start;
     height: 170px;
     width: 100%;
+    
   }
 
   .video {
@@ -102,6 +110,7 @@ export default {
   #seta-direita {
     position: absolute;
     z-index: 1;
+    right: 10px;
     align-self: center;
     justify-content: center;
   }
