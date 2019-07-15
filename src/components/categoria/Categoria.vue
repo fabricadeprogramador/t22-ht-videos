@@ -58,14 +58,10 @@ export default {
       'buscarCategorias'
     ]),
     moverVideosDireita(categoria) {
-      // var color = '#000000';
-      var categoria = document.getElementById(categoria._id);
-      // categoria.style.transition = "background 2.0s linear 0s";
-      // categoria.style.background = color;
-      categoria.scrollLeft += 310;
+      categoria = document.getElementById(categoria._id).scrollLeft += 310;
     },
     moverVideosEsquerda(categoria) {
-      var categoria = document.getElementById(categoria._id).scrollLeft -= 310;
+      categoria = document.getElementById(categoria._id).scrollLeft -= 310;
     }
   }
 }
@@ -77,8 +73,7 @@ export default {
     flex-direction: column;
     overflow-x: auto;
     overflow-y: hidden;
-    /* background: palevioletred;
-    height: 190px; */
+    scroll-behavior: smooth;
   }
 
   .videos {
@@ -88,7 +83,6 @@ export default {
     justify-content: flex-start;
     height: 170px;
     width: 100%;
-    
   }
 
   .video {
