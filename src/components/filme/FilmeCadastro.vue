@@ -10,9 +10,9 @@
         v-model="filme.titulo"
         v-validate="'required|max:40'"
         :counter="40"
-        :error-messages="errors.collect('titulo')"
+        :error-messages="errors.collect('filme.titulo')"
         label="Título do Filme"
-        data-vv-name="titulo"
+        data-vv-name="filme.titulo"
         required
       />
 
@@ -20,9 +20,9 @@
         v-model="filme.chave"
         v-validate="'required|max:12'"
         :counter="12"
-        :error-messages="errors.collect('chave')"
-        label="Chave"
-        data-vv-name="chave"
+        :error-messages="errors.collect('filme.chave')"
+        label="ID"
+        data-vv-name="filme.chave"
         required
       />
 
@@ -48,10 +48,10 @@ export default {
       'getCategorias'
     ])
   },
-  data(){
+  data() {
     return{
-      categoriaSelecionadas :[],
-      filme:{
+      categoriaSelecionadas: [],
+      filme: {
         titulo: '',
         chave: ''
       }
@@ -83,6 +83,7 @@ export default {
     }
   },
   mounted() {
+    this.$validator.localize(this.dictionary);
     this.filme = this.getFilme;
   }
 }

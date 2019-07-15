@@ -88,7 +88,7 @@ export default {
     justify-content: flex-start;
     height: 170px;
     width: 100%;
-    
+
   }
 
   .video {
