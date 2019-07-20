@@ -60,8 +60,8 @@ export default {
       'getFilmes',
       'getCategoria'
     ]),
-     formularioInvalido() {
-      return this.errors.items.length > 0 ;
+    formularioInvalido() {
+      return this.errors.items.length > 0;
     },
     nenhumaOpcaoSelecionada(){
       return this.filmesSelecionados.filter(
@@ -85,39 +85,40 @@ export default {
             _id: filme._id,
             titulo: filme.titulo,
             chave: filme.chave,
-            selecionado : this.categoria.filmes.find(filmeCategoria => filmeCategoria._id === filme._id)
+            selecionado: this.categoria.filmes.find(filmeCategoria => filmeCategoria._id === filme._id)
           })
           return acc;
         }, [])
       }
     },
     salvar() {
-       this.$validator.validateAll();
+      this.$validator.validateAll();
+      console.log(this.errors.items);
       this.categoria.filmes = this.filmesSelecionados.filter(
         (filme) => filme.selecionado 
       );
       
-      if(this.categoria.filmes.length) {
-        if( this.categoria._id){
-        this.editarCategoria(this.categoria)
-        .then( ({ data } ) => {
-          alert(data);
-          this.voltar();
-        })
-      } 
-      else{
-        this.salvarCategoria(this.categoria)
-        .then( ({ data } ) => {
-          alert(data);
-          this.voltar();
-        })
+      if (this.categoria.filmes.length) {
+        if (this.categoria._id) {
+          this.editarCategoria(this.categoria)
+          .then( ({ data } ) => {
+            alert(data);
+            this.voltar();
+          })
+        } 
+        else {
+          if (!this.errors.items > 0) {
+            this.salvarCategoria(this.categoria)
+            .then( ({ data } ) => {
+            alert(data);
+            this.voltar();
+            })
+          }
+          else {
+            alert("nao foi possivel salvar a categoria");
+          } 
+        } 
       }
-       
-      }else{ //
-        
-
-      }
-     
     },
     voltar(){
       this.$router.go(-1);
@@ -155,7 +156,6 @@ export default {
 
   .erro{
     color:#ff5252 !important;
-
   }
   
    @media only screen and (max-width: 640px)
@@ -164,7 +164,6 @@ export default {
       font-size: 30px;
     }
     .formulario{
-      
       width: 80%;
     }
    

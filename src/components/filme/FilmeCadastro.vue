@@ -8,11 +8,11 @@
     <form>
       <v-text-field
         v-model="filme.titulo"
-        v-validate="'required|max:40'"
-        :counter="40"
-        :error-messages="errors.collect('titulo')"
+        v-validate="'required|min:4|max:35'"
+        :counter="35"
+        :error-messages="errors.collect('filme.titulo')"
         label="Título do Filme"
-        data-vv-name="titulo"
+        data-vv-name="filme.titulo"
         required
       />
 
@@ -20,9 +20,9 @@
         v-model="filme.chave"
         v-validate="'required|max:12'"
         :counter="12"
-        :error-messages="errors.collect('chave')"
-        label="Chave"
-        data-vv-name="chave"
+        :error-messages="errors.collect('filme.chave')"
+        label="ID"
+        data-vv-name="filme.chave"
         required
       />
 
@@ -48,11 +48,10 @@ export default {
       'getCategorias'
     ]),
     formularioInvalido() {
-    
       return this.errors.items.length > 0;
     }
   },
-  data(){
+  data() {
     return{
       categoriaSelecionadas: [],
       filme:{
@@ -60,19 +59,15 @@ export default {
         chave: ''
       },
       dictionary: {
-        
-          filme:{
-
+          filme: {
             titulo: {
             required: () => 'Your email is empty',
-              max:'hbvgcvnkl'
+              max:'h'
           },
           chave: {
             required: () => 'Your name is empty'
           }
-
         }
-       
       }
     } 
   },
@@ -85,7 +80,8 @@ export default {
       this.$validator.validateAll()
 
     },
-    salvar1() {
+    /*
+    salvar() {
       if(this.filme._id) {
         this.editarFilme(this.filme)
         .then(({ data }) => {
@@ -101,11 +97,13 @@ export default {
         })
       }
     },
+    */
     voltar() {
       this.$router.go(-1);
     }
   },
   mounted() {
+    this.$validator.localize(this.dictionary);
     this.filme = this.getFilme;
     this.$validator.localize(this.dictionary);
   }

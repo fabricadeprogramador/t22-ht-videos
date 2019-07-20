@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-toolbar dark  v-if=" getUsuario.nome != undefined"  
+    <v-toolbar dark  v-if="getUsuario.nome != undefined"  
     :class="{'buscador-aberto':exibirCampoBusca}">
       <v-toolbar-side-icon>
         <v-layout justify-center>
@@ -16,10 +16,9 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items 
+      <v-toolbar-items>
        
-      >
-        <v-expand-x-transition > 
+        <v-expand-x-transition> 
           <v-text-field
             v-if="exibirCampoBusca"
             transition="slide-x-transition"
@@ -29,13 +28,13 @@
           />
         </v-expand-x-transition>
     
-        <v-btn icon  @click="buscar()" slot="activator">
+        <v-btn icon v-if="exibirIconeBusca" @click="buscar()" slot="activator">
           <v-icon>search</v-icon>
         </v-btn>
 
         <div class="text-xs-center">
           <v-menu offset-y>
-            <template v-slot:activator="{ on }" >
+            <template v-slot:activator="{ on }">
               <img v-on="on" :src="getUsuario.imagem"  class="imagem-usuario" >
             </template>
             <v-list>
@@ -124,19 +123,20 @@ export default {
       drawer: null,
       items: [
       { title: 'Home', icon: 'home', rota:'categorias' },
-      { title: 'Categorias', icon: 'style',rota:'categoria-listagem' },
-      { title: 'Filmes', icon: 'movie_creation',rota:'filme-listagem'  }
+      { title: 'Categorias', icon: 'style', rota:'categoria-listagem' },
+      { title: 'Filmes', icon:'movie_creation', rota:'filme-listagem'  }
       ],
       mini: false,
       right: null,
-      exibirCampoBusca: false
+      exibirCampoBusca: false,
+      exibirIconeBusca: true
     }
   },
   computed:{
     ...mapGetters([
       'getUsuario',
       'getListaUsuarios',
-      'getPalavraBuscada'
+      'getPalavraBuscada',
     ]),
     palavraBuscada: {
       get(){
@@ -144,6 +144,17 @@ export default {
       },
       set(value){
         this.setPalavraBuscada(value);
+      }
+    },
+  },
+  watch: {
+    '$route' (to, from) {
+      if (to.path != '/categorias') {
+        this.exibirIconeBusca = false;
+        this.exibirCampoBusca = false;
+      }
+      else {
+        this.exibirIconeBusca = true;
       }
     }
   },
@@ -162,7 +173,7 @@ export default {
       this.setUsuario({});
       this.$router.push('/');
     },
-    buscar(){
+    buscar(){ 
       this.exibirCampoBusca = !this.exibirCampoBusca;
     },
     redirecionarTelaInicial(){
@@ -170,7 +181,7 @@ export default {
     },
   },
   mounted(){
-    if( !this.getUsuario.nome ){
+    if(!this.getUsuario.nome){
       this.$router.push('/');
     }
   }
