@@ -1,6 +1,6 @@
 const express = require('express');
 const path =  require('path');
-const serverStatic = require('server-static');
+const serveStatic = require('serve-static');
 const endereco = '0.0.0.0';
 const porta = process.env.PORT || 5000;
 const server = express();
