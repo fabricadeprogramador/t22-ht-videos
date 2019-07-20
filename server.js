@@ -4,6 +4,7 @@ const serveStatic = require('serve-static');
 const endereco = '0.0.0.0';
 const porta = process.env.PORT || 5000;
 const server = express();
+const teste = 'teste'
 
 console.log(' TESTE ');
 
