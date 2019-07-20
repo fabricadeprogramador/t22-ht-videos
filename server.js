@@ -5,9 +5,12 @@ const endereco = '0.0.0.0';
 const porta = process.env.PORT || 5000;
 const server = express();
 
+console.log(' TESTE ');
 
 server.use(serveStatic(path.join(__dirname, 'dist')));
 
 server.listen(porta, endereco, () => {
   console.log('HT Videos Inicializado');
 });
+
+console.log(' LISTE');
