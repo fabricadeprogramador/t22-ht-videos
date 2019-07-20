@@ -8,15 +8,18 @@
     <form>
       <v-text-field
         v-model="categoria.nome"
-        v-validate="'required|min:4'"
+        v-validate="'required|min:4|max:30'"
         :counter="30"
-        :error-messages="errors.collect('Genero')"
+        :error-messages="errors.collect('nome')"
         label="Título do genero"
+        data-vv-name="nome"
         required>
       </v-text-field>
-      
+       
       <v-list subheader two-line>
-        <v-subheader>Selecione um ou mais filmes para a categoria</v-subheader>
+        <v-subheader :class="{erro:formularioInvalido && nenhumaOpcaoSelecionada}">
+          Selecione um ou mais filmes para a categoria
+          </v-subheader>
         <v-list-tile v-for="(filme, index) in filmesSelecionados" :key="index">
           <v-list-tile-action>
             <v-checkbox v-model="filme.selecionado"></v-checkbox>
@@ -24,12 +27,12 @@
           <v-list-tile-content>
             <v-list-tile-title>{{ filme.titulo }}</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile>  
+        </v-list-tile>
       </v-list>
   
       <div class="botoes">
         <v-btn outline color="white" @click="voltar">Voltar</v-btn>
-        <v-btn color="success" @click="salvar">Salvar</v-btn> 
+        <v-btn color="success" :disabled="formularioInvalido" @click="salvar">Salvar</v-btn> 
       </div>
     </form>
   </div>
@@ -45,6 +48,7 @@ export default {
   data (){
     return {
       filmesSelecionados :[],
+      filmesNaoSelecionados:false,
       categoria:{
         nome:'',
         filmes:[]
@@ -55,7 +59,15 @@ export default {
     ...mapGetters([
       'getFilmes',
       'getCategoria'
-    ])
+    ]),
+    formularioInvalido() {
+      return this.errors.items.length > 0;
+    },
+    nenhumaOpcaoSelecionada(){
+      return this.filmesSelecionados.filter(
+        (filme) => filme.selecionado 
+      ).length === 0;
+    }
   },
   methods:{
     ...mapActions([
@@ -73,29 +85,39 @@ export default {
             _id: filme._id,
             titulo: filme.titulo,
             chave: filme.chave,
-            selecionado : this.categoria.filmes.find(filmeCategoria => filmeCategoria._id === filme._id)
+            selecionado: this.categoria.filmes.find(filmeCategoria => filmeCategoria._id === filme._id)
           })
           return acc;
         }, [])
       }
     },
     salvar() {
+      this.$validator.validateAll();
+      console.log(this.errors.items);
       this.categoria.filmes = this.filmesSelecionados.filter(
         (filme) => filme.selecionado 
-      ); 
-      if( this.categoria._id){
-        this.editarCategoria(this.categoria)
-        .then( ({ data } ) => {
-          alert(data);
-          this.voltar();
-        })
-      } 
-      else{
-        this.salvarCategoria(this.categoria)
-        .then( ({ data } ) => {
-          alert(data);
-          this.voltar();
-        })
+      );
+      
+      if (this.categoria.filmes.length) {
+        if (this.categoria._id) {
+          this.editarCategoria(this.categoria)
+          .then( ({ data } ) => {
+            alert(data);
+            this.voltar();
+          })
+        } 
+        else {
+          if (!this.errors.items > 0) {
+            this.salvarCategoria(this.categoria)
+            .then( ({ data } ) => {
+            alert(data);
+            this.voltar();
+            })
+          }
+          else {
+            alert("nao foi possivel salvar a categoria");
+          } 
+        } 
       }
     },
     voltar(){
@@ -131,6 +153,10 @@ export default {
   .v-btn {
     margin: 0px;
   }
+
+  .erro{
+    color:#ff5252 !important;
+  }
   
    @media only screen and (max-width: 640px)
   {
@@ -138,7 +164,6 @@ export default {
       font-size: 30px;
     }
     .formulario{
-      
       width: 80%;
     }
    

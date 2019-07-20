@@ -8,8 +8,8 @@
     <form>
       <v-text-field
         v-model="filme.titulo"
-        v-validate="'required|max:40'"
-        :counter="40"
+        v-validate="'required|min:4|max:35'"
+        :counter="35"
         :error-messages="errors.collect('filme.titulo')"
         label="Título do Filme"
         data-vv-name="filme.titulo"
@@ -28,7 +28,7 @@
 
       <div class="botoes">
         <v-btn outline color="white" @click="voltar">Voltar</v-btn>
-        <v-btn color="success" @click="salvar">Salvar</v-btn> 
+        <v-btn color="success" @click="salvar" :disabled="formularioInvalido">Salvar</v-btn> 
       </div>
     </form>
   </div>
@@ -46,14 +46,28 @@ export default {
       'getNomeCategoria',
       'getFilme',
       'getCategorias'
-    ])
+    ]),
+    formularioInvalido() {
+      return this.errors.items.length > 0;
+    }
   },
   data() {
     return{
       categoriaSelecionadas: [],
-      filme: {
+      filme:{
         titulo: '',
         chave: ''
+      },
+      dictionary: {
+          filme: {
+            titulo: {
+            required: () => 'Your email is empty',
+              max:'h'
+          },
+          chave: {
+            required: () => 'Your name is empty'
+          }
+        }
       }
     } 
   },
@@ -62,8 +76,13 @@ export default {
       'salvarFilme',
       'editarFilme'
     ]),
+    salvar(){
+      this.$validator.validateAll()
+
+    },
+    /*
     salvar() {
-      if( this.filme._id) {
+      if(this.filme._id) {
         this.editarFilme(this.filme)
         .then(({ data }) => {
           alert(data);
@@ -78,6 +97,7 @@ export default {
         })
       }
     },
+    */
     voltar() {
       this.$router.go(-1);
     }
@@ -85,6 +105,7 @@ export default {
   mounted() {
     this.$validator.localize(this.dictionary);
     this.filme = this.getFilme;
+    this.$validator.localize(this.dictionary);
   }
 }
 </script>

@@ -62,7 +62,7 @@ export default new Vuex.Store({
     }
   },
   mutations:{
-    setUsuario(state,usuario) {
+    setUsuario(state, usuario) {
       state.usuario = usuario;
     },
     setPalavraBuscada(state, value){
@@ -104,23 +104,23 @@ export default new Vuex.Store({
       })
     },
     buscarFilmesPorNome(){
-      return http.get( api.url + 'filme/porNome')
+      return http.get(api.url + 'filme/porNome')
     },
-    salvarCategoria({dispatch}, categoria){
+    salvarCategoria({ dispatch }, categoria){
       return http.post( api.url + 'categoria', categoria)
       .then((response)=>{
         dispatch('buscarCategorias')
         return response
       })
     },
-    excluirCategoria({ dispatch}, categoria) {
+    excluirCategoria({ dispatch }, categoria) {
       return http.delete( api.url + 'categoria/' + categoria._id)
       .then((response)=>{
         dispatch('buscarCategorias')
         return response
       })
     },
-    editarCategoria({dispatch}, categoria){
+    editarCategoria({ dispatch }, categoria){
       return http.put( api.url + 'categoria', categoria)
       .then((response)=>{
         dispatch('buscarCategorias')
@@ -134,14 +134,14 @@ export default new Vuex.Store({
         return response
       })
     },
-    excluirFilme({ dispatch}, filme) {
+    excluirFilme({ dispatch }, filme) {
       return http.delete( api.url + 'filme/' + filme._id)
       .then((response)=>{
         dispatch('buscarFilmes')
         return response
       })
     },
-    editarFilme({dispatch}, filme){
+    editarFilme({ dispatch }, filme){
       return http.put( api.url + 'filme', filme)
       .then((response)=>{
         dispatch('buscarFilmes')

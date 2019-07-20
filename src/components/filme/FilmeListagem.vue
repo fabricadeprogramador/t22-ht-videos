@@ -9,6 +9,7 @@
     />
   </div>
 </template>
+
 <script>
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
