@@ -76,28 +76,25 @@ export default {
       'salvarFilme',
       'editarFilme'
     ]),
-    salvar(){
-      this.$validator.validateAll()
-
-    },
-    /*
     salvar() {
-      if(this.filme._id) {
-        this.editarFilme(this.filme)
-        .then(({ data }) => {
-          alert(data);
-          this.voltar();
-        })
-      } 
-      else {
-        this.salvarFilme(this.filme)
-        .then(({ data }) => {
-          alert(data);
-          this.voltar();
-        })
+      this.$validator.validateAll()
+      if (!this.errors.items.length) {
+        if(this.filme._id) {
+          this.editarFilme(this.filme)
+          .then(({ data }) => {
+            alert(data);
+            this.voltar();
+          })
+        } 
+        else {
+          this.salvarFilme(this.filme)
+          .then(({ data }) => {
+            alert(data);
+            this.voltar();
+          })
+        }
       }
     },
-    */
     voltar() {
       this.$router.go(-1);
     }

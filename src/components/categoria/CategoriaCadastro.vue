@@ -94,31 +94,29 @@ export default {
     salvar() {
       this.$validator.validateAll();
       console.log(this.errors.items);
-      this.categoria.filmes = this.filmesSelecionados.filter(
-        (filme) => filme.selecionado 
-      );
-      
-      if (this.categoria.filmes.length) {
-        if (this.categoria._id) {
-          this.editarCategoria(this.categoria)
-          .then( ({ data } ) => {
-            alert(data);
-            this.voltar();
-          })
-        } 
-        else {
-          if (!this.errors.items > 0) {
-            this.salvarCategoria(this.categoria)
+      if (!this.errors.items.length) {
+        this.categoria.filmes = this.filmesSelecionados.filter(
+          (filme) => filme.selecionado 
+        );
+        
+        if (this.categoria.filmes.length) {
+          if (this.categoria._id) {
+            this.editarCategoria(this.categoria)
             .then( ({ data } ) => {
-            alert(data);
-            this.voltar();
+              alert(data);
+              this.voltar();
             })
-          }
-          else {
-            alert("nao foi possivel salvar a categoria");
           } 
+          else {
+            this.salvarCategoria(this.categoria)
+              .then( ({ data } ) => {
+              alert(data);
+              this.voltar();
+              })
+          }
         } 
       }
+    
     },
     voltar(){
       this.$router.go(-1);
