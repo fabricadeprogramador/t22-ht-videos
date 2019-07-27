@@ -11,13 +11,13 @@
         v-validate="'required|min:4|max:30'"
         :counter="30"
         :error-messages="errors.collect('nome')"
-        label="Título do genero"
+        label="Nome"
         data-vv-name="nome"
         required>
       </v-text-field>
        
       <v-list subheader two-line>
-        <v-subheader :class="{erro:formularioInvalido && nenhumaOpcaoSelecionada}">
+        <v-subheader :class="{erro: !nenhumFilmeFoiSelecionado && nenhumaOpcaoSelecionada}">
           Selecione um ou mais filmes para a categoria
           </v-subheader>
         <v-list-tile v-for="(filme, index) in filmesSelecionados" :key="index">
@@ -32,7 +32,7 @@
   
       <div class="botoes">
         <v-btn outline color="white" @click="voltar">Voltar</v-btn>
-        <v-btn color="success" :disabled="formularioInvalido" @click="salvar">Salvar</v-btn> 
+        <v-btn color="success" :disabled="desabilitarBotaoSalvar" @click="salvar">Salvar</v-btn> 
       </div>
     </form>
   </div>
@@ -48,10 +48,19 @@ export default {
   data (){
     return {
       filmesSelecionados :[],
-      filmesNaoSelecionados:false,
+      nenhumFilmeFoiSelecionado: true,
       categoria:{
         nome:'',
         filmes:[]
+      },
+      dictionary: {
+        custom: {
+          nome: {
+            required: () => 'Informe o nome do filme',
+            max: () => 'Nome muito grande',
+            min: () => 'Nome muito pequeno',
+          }
+        }
       }
     }
   },
@@ -64,9 +73,15 @@ export default {
       return this.errors.items.length > 0;
     },
     nenhumaOpcaoSelecionada(){
-      return this.filmesSelecionados.filter(
-        (filme) => filme.selecionado 
-      ).length === 0;
+      let quantidadeFilmesSelecionados = this.filmesSelecionados.filter(filme => filme.selecionado).length;
+      if( quantidadeFilmesSelecionados !== 0 && this.nenhumFilmeFoiSelecionado){
+        this.nenhumFilmeFoiSelecionado = false;
+      }
+     
+      return quantidadeFilmesSelecionados === 0;
+    },
+    desabilitarBotaoSalvar(){
+      return this.formularioInvalido || this.nenhumaOpcaoSelecionada;
     }
   },
   methods:{
@@ -93,7 +108,6 @@ export default {
     },
     salvar() {
       this.$validator.validateAll();
-      console.log(this.errors.items);
       if (!this.errors.items.length) {
         this.categoria.filmes = this.filmesSelecionados.filter(
           (filme) => filme.selecionado 
@@ -109,10 +123,10 @@ export default {
           } 
           else {
             this.salvarCategoria(this.categoria)
-              .then( ({ data } ) => {
+            .then( ({ data } ) => {
               alert(data);
               this.voltar();
-              })
+            })
           }
         } 
       }
@@ -123,6 +137,7 @@ export default {
     }
   },
   mounted() {
+    this.$validator.localize('en', this.dictionary);
     this.categoria = this.getCategoria;
     this.buscarFilmes().then(() => {
       this.selecionarFilmes();
@@ -150,6 +165,10 @@ export default {
 
   .v-btn {
     margin: 0px;
+  }
+
+  .v-input {
+    margin-bottom: 16px;
   }
 
   .erro{

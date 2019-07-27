@@ -176,7 +176,6 @@ export default {
       this.$router.push('/');
     },
     buscar(){ 
-      console.log(document.documentElement.clientHeight);
       this.exibirCampoBusca = !this.exibirCampoBusca;
     },
     redirecionarTelaInicial(){

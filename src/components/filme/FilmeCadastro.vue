@@ -10,9 +10,9 @@
         v-model="filme.titulo"
         v-validate="'required|min:4|max:35'"
         :counter="35"
-        :error-messages="errors.collect('filme.titulo')"
+        :error-messages="errors.collect('titulo')"
         label="Título do Filme"
-        data-vv-name="filme.titulo"
+        data-vv-name="titulo"
         required
       />
 
@@ -20,9 +20,9 @@
         v-model="filme.chave"
         v-validate="'required|max:12'"
         :counter="12"
-        :error-messages="errors.collect('filme.chave')"
+        :error-messages="errors.collect('chave')"
         label="ID"
-        data-vv-name="filme.chave"
+        data-vv-name="chave"
         required
       />
 
@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters, mapActions} from 'vuex';
+import { Validator } from 'vee-validate';
 export default {
   name: 'FilmeCadastro',
   $_veeValidate: {
@@ -59,13 +60,15 @@ export default {
         chave: ''
       },
       dictionary: {
-          filme: {
-            titulo: {
-            required: () => 'Your email is empty',
-              max:'h'
+        custom: {
+          titulo: {
+            required: () => 'Informe o titulo do filme',
+            max: () => 'Titulo muito grande',
+            min: () => 'Titulo muito pequeno',
           },
           chave: {
-            required: () => 'Your name is empty'
+            required: () => 'Informe a chave do filme',
+            max: () => 'Chave muito grande',
           }
         }
       }
@@ -100,9 +103,8 @@ export default {
     }
   },
   mounted() {
-    this.$validator.localize(this.dictionary);
+    this.$validator.localize('en', this.dictionary);
     this.filme = this.getFilme;
-    this.$validator.localize(this.dictionary);
   }
 }
 </script>

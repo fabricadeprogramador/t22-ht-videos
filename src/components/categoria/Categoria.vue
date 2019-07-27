@@ -69,7 +69,6 @@ export default {
       'buscarCategorias'
     ]),
     moverVideosDireita(categoria) {
-      console.log(categoria.filmes);
       categoria = document.getElementById(categoria._id).scrollLeft += 310;
     },
     moverVideosEsquerda(categoria) {
@@ -87,6 +86,7 @@ export default {
     overflow-y: hidden;
     background: #303030;
     margin-top: 5px; 
+    scroll-behavior: smooth;
   }
 
   .videos {
