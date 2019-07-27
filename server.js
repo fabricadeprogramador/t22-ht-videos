@@ -9,4 +9,4 @@ server.use(serveStatic(path.join(__dirname, 'dist')));
 
 server.listen(porta, endereco, () => {
   console.log('HT Videos Inicializado');
-})
+}) 

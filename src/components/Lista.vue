@@ -16,8 +16,8 @@
       <template v-for="(item, index) in items">
         <v-divider v-if="index > 0 " :key="index"></v-divider>
         <v-list-tile :key="item._id">
-
-          <div v-if="item.chave != undefined"> 
+          
+          <div v-if="item.chave != undefined" class="tile"> 
               <img class="img-thumb" :src="'https://img.youtube.com/vi/' + item.chave + '/maxresdefault.jpg'">
           <v-list-tile-content>
             <v-list-tile-title class="list-tile-title">{{ item.titulo }}</v-list-tile-title>
@@ -108,5 +108,11 @@ export default {
   .v-list__tile__content {
     display: flex;
     align-content: center;
+  }
+
+  .tile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 </style>

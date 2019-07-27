@@ -145,16 +145,18 @@ export default {
       set(value){
         this.setPalavraBuscada(value);
       }
-    },
+    }
   },
   watch: {
     '$route' (to, from) {
       if (to.path != '/categorias') {
         this.exibirIconeBusca = false;
         this.exibirCampoBusca = false;
+        this.setPalavraBuscada("");
       }
       else {
         this.exibirIconeBusca = true;
+        
       }
     }
   },
@@ -174,6 +176,7 @@ export default {
       this.$router.push('/');
     },
     buscar(){ 
+      console.log(document.documentElement.clientHeight);
       this.exibirCampoBusca = !this.exibirCampoBusca;
     },
     redirecionarTelaInicial(){
@@ -203,6 +206,11 @@ export default {
     width: 24px;
     margin-right: 8px;
   }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 
   .menu, .v-toolbar__items{
     display: flex;
