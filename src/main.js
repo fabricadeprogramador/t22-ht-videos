@@ -27,7 +27,8 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'Usuario',
-      component: Usuario
+      component: Usuario,
+      meta: { title: 'HT Videos' }
     },
     {
       path: '/filme',
@@ -47,7 +48,8 @@ const router = new VueRouter({
     {
       path: '/categorias',
       name: 'categoria',
-      component: Categoria
+      component: Categoria,
+      meta: { title: 'HT Videos' }
     },
     {
       path: '/categoria-listagem',

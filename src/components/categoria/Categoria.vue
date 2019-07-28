@@ -8,14 +8,14 @@
         <span class="span-categoria">{{ categoria.nome }}</span>
       </div>
       <div class="videos" v-if="categoria.filmes.length > 0">
-        <v-icon v-if="exibeSeta"
+        <v-icon
           color=white 
           x-large 
           id="seta-esquerda" 
           @click="moverVideosEsquerda(categoria)"> 
             keyboard_arrow_left
         </v-icon>
-        <v-icon v-if="categoria.filmes.length > 4"
+        <v-icon
           color=white 
           x-large 
           id="seta-direita" 
@@ -56,7 +56,7 @@ export default {
           return true;
         }
       }
-      }
+    }
   },
   created(){
     if(!this.getUsuario.id){
@@ -69,7 +69,6 @@ export default {
       'buscarCategorias'
     ]),
     moverVideosDireita(categoria) {
-      console.log(categoria.filmes);
       categoria = document.getElementById(categoria._id).scrollLeft += 310;
     },
     moverVideosEsquerda(categoria) {
@@ -87,6 +86,7 @@ export default {
     overflow-y: hidden;
     background: #303030;
     margin-top: 5px; 
+    scroll-behavior: smooth;
   }
 
   .videos {
@@ -152,7 +152,6 @@ export default {
 
     .categoria {
       margin-top: 10px;
-      padding-bottom: 40px; 
     }
 
     .span-categoria {
