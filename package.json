@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "vee-validate": "^2.2.0",
     "vue": "^2.5.22",
     "vue-router": "^3.0.2",
